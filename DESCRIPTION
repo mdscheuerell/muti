@@ -1,11 +1,11 @@
 Package: muti
-Type: Package
 Title: Calculates the Mutual Information Between Two Vectors
 Version: 0.1.0
-Author: Mark Scheuerell
-Maintainer: Mark Scheuerell <mark.scheuerell@noaa.gov>
+Authors@R: as.person(c("Mark Scheuerell <mark.scheuerell@noaa.gov> [cre]"))
 Description: muti calculates the mutual information between two vectors.
-The vectors can contain symbolic (e.g., "A", "increasing") or real-valued.
+    The vectors can contain symbolic (e.g., "A", "increasing") or real values.
 License: GPL_2
 Encoding: UTF-8
 LazyData: true
+URL: http://github.com/mdscheuerell/muti
+BugReports: http://github.com/mdscheuerell/muti/issues
