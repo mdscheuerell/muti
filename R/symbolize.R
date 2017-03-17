@@ -1,4 +1,4 @@
-#' Calculate the mutual information between two vectors.
+#' Convert a numeric vector into a symbolic vector.
 #'
 #' \code{symbolize} converts a numeric vector into a symbolic vector.
 #'
@@ -7,6 +7,7 @@
 #' @return An [(n-2) x 2] \code{matrix} of integer symbols that indicate whether the i-th value,
 #' based on the i-1 and i+1 values, is a "trough" (=1), "decrease" (=2), "same" (=3), "increase" (=4), or "peak" (=5).
 #'
+#' @export
 symbolize <- function(xy) {
   ## of interest and converts them from numeric to symbolic.
   ## check input for errors
