@@ -38,7 +38,7 @@ Examples
 
 The primary output of `muti` is a data frame with the MI and associated critical value at different lags. Additionally, `muti` produces plots of the original data, symbolic data (if that option is chosen), and the MI values and associated critical value at different lags.
 
-### 2 random variables
+### 2 random variables as symbolic
 
 Here's a case where there should be very little mutual information between *X* and *Y*.
 
@@ -63,31 +63,49 @@ muti(x,y)
     ##  [8,]   3 0.02230546 0.3719128
     ##  [9,]   4 0.06044060 0.3726831
 
-![](README_files/figure-markdown_github/ex_1-2.png)
+### 2 correlated variables as symbolic
 
-### 2 correlated variables
-
-Here's a case where there should be very little mutual information between *X* and *Y*.
+Here's a case where there should be significant mutual information between *X* and *Y*.
 
 ``` r
-set.seed(123)
-TT <- 30
-x <- rnorm(TT)
 y <- x + rnorm(TT,0,0.3)
 muti(x,y)
 ```
 
+    ## Warning in par(new = TRUE): calling par(new=TRUE) with no plot
+
 ![](README_files/figure-markdown_github/ex_2-1.png)
 
     ##       lag     MI_xy     MI_ci
-    ##  [1,]  -4 0.2196129 0.3317189
-    ##  [2,]  -3 0.2375794 0.3254760
-    ##  [3,]  -2 0.2722575 0.2893659
-    ##  [4,]  -1 0.4176067 0.3302175
-    ##  [5,]   0 0.6166387 0.3056789
-    ##  [6,]   1 0.3996744 0.3262555
-    ##  [7,]   2 0.1807963 0.3374964
-    ##  [8,]   3 0.2162810 0.3448770
-    ##  [9,]   4 0.2416187 0.3551923
+    ##  [1,]  -4 0.3355358 0.3717175
+    ##  [2,]  -3 0.3521153 0.3659658
+    ##  [3,]  -2 0.3805507 0.3325559
+    ##  [4,]  -1 0.5410277 0.3069245
+    ##  [5,]   0 0.6405696 0.2788940
+    ##  [6,]   1 0.4420608 0.3056674
+    ##  [7,]   2 0.2531284 0.3125187
+    ##  [8,]   3 0.2179978 0.3396132
+    ##  [9,]   4 0.1743555 0.3676712
 
-![](README_files/figure-markdown_github/ex_2-2.png)
+### 2 correlated variables with binning
+
+Same as above with regular binning instead of symbolic (*i.e.*, `sym=FALSE`).
+
+``` r
+muti(x,y,sym=FALSE)
+```
+
+    ## Warning in par(new = TRUE): calling par(new=TRUE) with no plot
+
+![](README_files/figure-markdown_github/ex_3-1.png)
+
+    ##       lag     MI_xy     MI_ci
+    ##  [1,]  -4 0.4501135 0.4368582
+    ##  [2,]  -3 0.4109704 0.4476704
+    ##  [3,]  -2 0.3230329 0.4072304
+    ##  [4,]  -1 0.3672059 0.4080026
+    ##  [5,]   0 0.6009206 0.4261906
+    ##  [6,]   1 0.3841255 0.4269563
+    ##  [7,]   2 0.3597277 0.4372735
+    ##  [8,]   3 0.4653827 0.4476501
+    ##  [9,]   4 0.3391820 0.4562120

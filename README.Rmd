@@ -47,7 +47,7 @@ where _H_(_X_,_Y_) is the joint entropy between _X_ and _Y_.
 
 The primary output of `muti` is a data frame with the MI and associated critical value at different lags. Additionally, `muti` produces plots of the  original data, symbolic data (if that option is chosen), and the MI values and associated critical value at different lags.
 
-### 2 random variables
+### 2 random variables as symbolic
 
 Here's a case where there should be very little mutual information between _X_ and _Y_.
 
@@ -59,16 +59,21 @@ y <- rnorm(TT)
 muti(x,y)
 ```
 
-### 2 correlated variables
+### 2 correlated variables as symbolic
 
-Here's a case where there should be very little mutual information between _X_ and _Y_.
+Here's a case where there should be significant mutual information between _X_ and _Y_.
 
-```{r ex_2, fig.width=8, fig.height=8}
-set.seed(123)
-TT <- 30
-x <- rnorm(TT)
+```{r ex_2, fig.width=6, fig.height=6}
 y <- x + rnorm(TT,0,0.3)
 muti(x,y)
+```
+
+### 2 correlated variables with binning
+
+Same as above with regular binning instead of symbolic (_i.e._, `sym=FALSE`).
+
+```{r ex_3, fig.width=6, fig.height=6}
+muti(x,y,sym=FALSE)
 ```
 
 
