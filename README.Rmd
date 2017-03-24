@@ -49,7 +49,7 @@ The primary output of `muti` is a data frame with the MI and associated critical
 
 ### 2 random variables
 
-```{r ex_1, out.width='100%', out.height='100%'}
+```{r ex_1, out.width='100%', out.height='100%', dev='svg'}
 set.seed(123)
 TT <- 30
 x <- rnorm(TT)
@@ -59,7 +59,7 @@ y <- rnorm(TT)
 
 ### 2 correlated variables
 
-```{r ex_2, out.width='100%', out.height='100%'}
+```{r ex_2, fig.width=4, fig.height=4, out.width='50%', out.height='50%', dev='svg'}
 set.seed(123)
 TT <- 30
 x <- rnorm(TT)

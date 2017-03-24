@@ -58,7 +58,7 @@ y <- x + rnorm(TT,0,0.1)
 muti(x,y)
 ```
 
-<img src="README_files/figure-markdown_github/ex_2-1.png" width="100%" height="100%" />
+<img src="README_files/figure-markdown_github/ex_2-1.svg" width="50%" height="50%" />
 
     ##       lag     MI_xy     MI_ci
     ##  [1,]  -4 0.2196129 0.4125676
