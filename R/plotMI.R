@@ -38,7 +38,7 @@ plotMI <- function(x,y,MI,sym,n_bins) {
   if(sym) {
     ## middle panel: symbolic ts
     screen(2)
-    #par(mai=c(1,1.5,0,0.1))
+    par(mai=c(1,1.5,0,0.1))
     matplot(seq(n), symbolize(xy), type="b", pch=c('s','u'), lty="solid", col=clr,
             xlab="Time", cex.axis=0.8,
             ylab="", yaxt="n")
@@ -48,7 +48,7 @@ plotMI <- function(x,y,MI,sym,n_bins) {
   } else {
     ## middle panel: discretized ts
     screen(2)
-    #par(mai=c(1,1.5,0.1,0.1))
+    par(mai=c(1,1.5,0.1,0.1))
     x <- transM(x,n_bins)$xn[,"hin"]
     y <- transM(y,n_bins)$xn[,"hin"]
     matplot(seq(n), cbind(x,y), type="b", pch=c('s','u'), lty="solid", col=clr,
@@ -60,7 +60,7 @@ plotMI <- function(x,y,MI,sym,n_bins) {
   }
   ## bottom panel: mutual info
   screen(4)
-  #par(mai=c(1,1.5,0.1,0.1))
+  par(mai=c(1,1.5,0.1,0.1))
   ylm <- c(0,ceiling(max(MI[,c("MI_xy","MI_ci")]/0.1,na.rm=TRUE))*0.1)
   if(dim(MI)[1] > 1) {
     matplot(MI[,"lag"],MI[,c("MI_xy","MI_ci")],type="l",lty=c("solid","dashed"),

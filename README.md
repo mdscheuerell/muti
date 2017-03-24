@@ -72,8 +72,6 @@ y <- x + rnorm(TT,0,0.5)
 muti(x,y)
 ```
 
-    ## Warning in par(new = TRUE): calling par(new=TRUE) with no plot
-
 ![](README_files/figure-markdown_github/ex_2-1.png)
 
     ##       lag     MI_xy     MI_ci
@@ -94,8 +92,6 @@ Same as above with regular binning instead of symbolic (*i.e.*, `sym=FALSE`).
 ``` r
 muti(x,y,sym=FALSE)
 ```
-
-    ## Warning in par(new = TRUE): calling par(new=TRUE) with no plot
 
 ![](README_files/figure-markdown_github/ex_3-1.png)
 
