@@ -26,7 +26,7 @@ plotMI <- function(x,y,MI,sym,n_bins) {
   ## fig2 is symbolic/discrete data
   ## fig3 is mutual info
   split.screen(c(3,1))
-  split.screen(c(1,3),screen=3)
+  split.screen(c(1,2),screen=3)
   ## top panel: orig ts
   screen(1)
   par(mai=c(1,1.5,0.1,0.1))
