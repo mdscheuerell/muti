@@ -1,6 +1,8 @@
 # muti
 `muti` computes the mutual information (MI) between two vectors, which is based upon their individual and joint entropies. The entropy $H$ of a discrete random variable $X$ with probabiloity mass function $P(X)$ is
 
+![](mdscheuerell.github.com/img/img/entropy_eqn.svg)
+
 $$
 H(X) = -\displaystyle\sum_{i=1}^{n} P(x_i) \ \text{log}_b P(x_i).
 $$
