@@ -4,7 +4,7 @@
 \alias{muti}
 \title{Calculate mutual information between two vectors and plot results.}
 \usage{
-muti(x, y, n_bins = NULL, sym = TRUE, lags = seq(-5, 5), mc = 100,
+muti(x, y, n_bins = NULL, sym = TRUE, lags = seq(-4, 4), mc = 100,
   alpha = 0.05, normal = TRUE)
 }
 \arguments{

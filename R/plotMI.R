@@ -25,9 +25,11 @@ plotMI <- function(x,y,MI,sym,n_bins) {
   ## fig1 is raw data
   ## fig2 is symbolic/discrete data
   ## fig3 is mutual info
-  layout(matrix(c(1,2,0,3),2,2), c(lcm(8),lcm(6)), c(lcm(6),lcm(6)), TRUE)
+  #layout(matrix(c(1,2,0,3),2,2), c(lcm(7),lcm(5)), c(lcm(7),lcm(7)), TRUE)
+  layout(matrix(c(1,1,1,2,2,2,0,3,0),3,3,byrow=TRUE),
+         widths=c(1,3,1), heights=c(1,1,1), TRUE)
   ## top panel: orig ts
-  par(mai=c(1,1.5,0,0.1))
+  #par(mai=c(1,1.5,0,0.1))
   matplot(seq(n), xy, type="b", pch=c('x','y'), lty="solid", col=clr,
           xlab="Time", cex.axis=0.8,
           ylab="")
@@ -35,7 +37,7 @@ plotMI <- function(x,y,MI,sym,n_bins) {
   mtext(ytxt,2,line=3)
   if(sym) {
     ## bottom panel: symbolic ts
-    par(mai=c(1,1.5,0,0.1))
+    #par(mai=c(1,1.5,0,0.1))
     matplot(seq(n), symbolize(xy), type="b", pch=c('s','u'), lty="solid", col=clr,
             xlab="Time", cex.axis=0.8,
             ylab="", yaxt="n")
@@ -44,7 +46,7 @@ plotMI <- function(x,y,MI,sym,n_bins) {
     mtext(ytxt,2,line=6)
   } else {
     ## bottom panel: discretized ts
-    par(mai=c(1,1.5,0,0.1))
+    #par(mai=c(1,1.5,0,0.1))
     x <- transM(x,n_bins)$xn[,"hin"]
     y <- transM(y,n_bins)$xn[,"hin"]
     matplot(seq(n), cbind(x,y), type="b", pch=c('s','u'), lty="solid", col=clr,
@@ -55,7 +57,7 @@ plotMI <- function(x,y,MI,sym,n_bins) {
     mtext(ytxt,2,line=3)
   }
   ## right panel: mutual info
-  par(mai=c(1,1,0,0.1))
+  #par(mai=c(1,1,0,0.1))
   ylm <- c(0,ceiling(max(MI[,c("MI_xy","MI_ci")]/0.1,na.rm=TRUE))*0.1)
   if(dim(MI)[1] > 1) {
     matplot(MI[,"lag"],MI[,c("MI_xy","MI_ci")],type="l",lty=c("solid","dashed"),
