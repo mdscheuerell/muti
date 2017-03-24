@@ -91,6 +91,6 @@ Here's an example of examining the MI of a single time series at multiple time l
 
 ```{r ex_5, fig.width=6, fig.height=8, warning=FALSE}
 x <- cumsum(rnorm(TT))
-muti(x[-TT],x[-1],sym=FALSE)
+muti(x,x,sym=FALSE)
 ```
 
