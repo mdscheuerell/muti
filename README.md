@@ -40,15 +40,32 @@ The primary output of `muti` is a data frame with the MI and associated critical
 
 ### 2 random variables
 
+Here's a case where there should be very little mutual information between *X* and *Y*.
+
 ``` r
 set.seed(123)
 TT <- 30
 x <- rnorm(TT)
 y <- rnorm(TT)
-#muti(x,y)
+muti(x,y)
 ```
 
+![](README_files/figure-markdown_github/ex_1-1.png)
+
+    ##       lag      MI_xy     MI_ci
+    ##  [1,]  -4 0.06800523 0.3537884
+    ##  [2,]  -3 0.02230546 0.3672606
+    ##  [3,]  -2 0.02816403 0.3300176
+    ##  [4,]  -1 0.04561370 0.3298602
+    ##  [5,]   0 0.06997917 0.3306153
+    ##  [6,]   1 0.10937351 0.3235016
+    ##  [7,]   2 0.09965162 0.3544732
+    ##  [8,]   3 0.02230546 0.3719128
+    ##  [9,]   4 0.06044060 0.3726831
+
 ### 2 correlated variables
+
+Here's a case where there should be very little mutual information between *X* and *Y*.
 
 ``` r
 set.seed(123)
@@ -58,7 +75,7 @@ y <- x + rnorm(TT,0,0.1)
 muti(x,y)
 ```
 
-<img src="README_files/figure-markdown_github/ex_2-1.svg" width="50%" height="50%" />
+![](README_files/figure-markdown_github/ex_2-1.png)
 
     ##       lag     MI_xy     MI_ci
     ##  [1,]  -4 0.2196129 0.4125676
