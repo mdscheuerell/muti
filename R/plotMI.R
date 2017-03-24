@@ -11,6 +11,8 @@
 #'
 #' @return Plots of original vectors, (potential) symbolic values, and the mutual information at multiple lags.
 #'
+#' @importFrom graphics abline axis layout lcm matplot mtext par plot
+#'
 #' @export
 plotMI <- function(x,y,MI,sym,n_bins) {
   ## function to plot original & symbolic ts (is desired), plus mutual info
@@ -54,18 +56,18 @@ plotMI <- function(x,y,MI,sym,n_bins) {
   }
   ## right panel: mutual info
   par(mai=c(1,1,0,0.1))
-  ylm <- c(0,ceiling(max(MI[,c("Ixy","Ici")]/0.1,na.rm=TRUE))*0.1)
+  ylm <- c(0,ceiling(max(MI[,c("MI_xy","MI_ci")]/0.1,na.rm=TRUE))*0.1)
   if(dim(MI)[1] > 1) {
-    matplot(MI[,"lag"],MI[,c("Ixy","Ici")],type="l",lty=c("solid","dashed"),
+    matplot(MI[,"lag"],MI[,c("MI_xy","MI_ci")],type="l",lty=c("solid","dashed"),
             lwd=c(2,1),ylim=ylm,col="black",
             xlab="Lag", cex.axis=0.8,
             ylab="")
   } else {
-    plot(MI[,"lag"],MI[,"Ixy"], pch=16,
+    plot(MI[,"lag"],MI[,"MI_xy"], pch=16,
          ylim=ylm, col="black",
          xlab="Lag", cex.axis=0.8,
          ylab="")
-    abline(h=MI[,"Ici"], lty="dashed")
+    abline(h=MI[,"MI_ci"], lty="dashed")
   }
   if(sym) {
     ytxt <- expression(paste("Mutual information (",italic(MI[su]),")",sep=""))

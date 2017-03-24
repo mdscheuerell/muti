@@ -7,6 +7,8 @@
 #'
 #' @return A vector of resampled values.
 #'
+#' @importFrom stats rmultinom
+#'
 #' @export
 newZ <- function(tM, n_bins) {
   ## helper function for creating new ts based on resampling

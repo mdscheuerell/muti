@@ -14,7 +14,7 @@
 #'   positive and/or negative.
 #' @param mc The number of Monte Carlo simulations for estimating the
 #'   confidence interval on the mutual information.
-#' @param alpha The $\alpha$ value for the upper (1-$\alpha$)% confidence bound
+#' @param alpha The alpha value for the upper (1-alpha)% confidence bound
 #'   on the mutual information (lower bound is 0).
 #' @param normal Boolean indicator of whether to normalize the mutual
 #'   information based on the entropies. See 'Details."

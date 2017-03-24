@@ -1,7 +1,7 @@
 #' Estimates the transition matrix for confidence intervals on mutual information.
 #'
 #' \code{mutual_info} is a helper function for estimating the transition matrix
-#' used in creating resampled vectors for the (1 - $\alpha$)% confidence
+#' used in creating resampled vectors for the (1 - alpha)% confidence
 #' interval on the mutual info.
 #'
 #' @param x A \code{vector} of values.
@@ -12,6 +12,8 @@
 #' \item{\code{xn}}{An [n x 2] matrix of the original and discretized vectors.}
 #' \item{\code{MM}}{Transition probability matrix from bin-i to bin-j.}
 #' }
+#'
+#' @importFrom stats runif
 #'
 #' @export
 transM <- function(x,n_bins) {

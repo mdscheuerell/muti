@@ -3,8 +3,11 @@ Title: Calculates the Mutual Information Between Two Vectors
 Version: 0.1.0
 Authors@R: as.person(c("Mark Scheuerell <mark.scheuerell@noaa.gov> [cre]"))
 Description: muti calculates the mutual information between two vectors.
+Depends: R (>= 3.3)
+Imports:
+    graphics,
+    stats
 License: CC0
-Encoding: UTF-8
-LazyData: true
 URL: http://github.com/mdscheuerell/muti
 BugReports: http://github.com/mdscheuerell/muti/issues
+RoxygenNote: 5.0.1
