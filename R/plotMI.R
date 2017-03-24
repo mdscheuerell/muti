@@ -29,7 +29,7 @@ plotMI <- function(x,y,MI,sym,n_bins) {
 #  layout(matrix(c(1,1,1,2,2,2,0,3,0),3,3,byrow=TRUE),
 #         widths=c(1,3,1), heights=c(2,2,2), TRUE)
 #  widths=c(lcm(2),lcm(5),lcm(2)), heights=c(lcm(4),lcm(4),lcm(4)), TRUE)
-  par(mfrow=c(3,1), omi=rep(0.1,4), mai=c(1,1.5,0.1,0))
+  par(mfrow=c(3,1), omi=rep(0.1,4), mai=c(0.8,1.5,0,0))
   ## top panel: orig ts
   #par(mai=c(1,1.5,0,0.1))
   matplot(seq(n), xy, type="b", pch=c('x','y'), lty="solid", col=clr,

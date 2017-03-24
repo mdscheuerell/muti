@@ -51,7 +51,7 @@ The primary output of `muti` is a data frame with the MI and associated critical
 
 Here's a case where there should be very little mutual information between _X_ and _Y_.
 
-```{r ex_1, fig.width=5, fig.height=5}
+```{r ex_1, fig.width=6, fig.height=6}
 set.seed(123)
 TT <- 30
 x <- rnorm(TT)
@@ -63,7 +63,7 @@ muti(x,y)
 
 Here's a case where there should be very little mutual information between _X_ and _Y_.
 
-```{r ex_2, fig.width=5, fig.height=5}
+```{r ex_2, fig.width=6, fig.height=6}
 set.seed(123)
 TT <- 30
 x <- rnorm(TT)
