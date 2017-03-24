@@ -5,7 +5,7 @@
 \title{Calculate mutual information between two vectors and plot results.}
 \usage{
 muti(x, y, n_bins = NULL, sym = TRUE, lags = seq(-4, 4), mc = 100,
-  alpha = 0.05, normal = TRUE)
+  alpha = 0.05, normal = FALSE)
 }
 \arguments{
 \item{x}{First vector of data}
@@ -55,7 +55,7 @@ y <- rnorm(TT)
 muti(x,y)
 
 ## CASE 2: mutual info at lag 1
-y <- x + rnorm(TT,0,0.1)
+y <- x + rnorm(TT,0,0.5)
 muti(x,y)
 
 }

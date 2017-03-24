@@ -38,11 +38,11 @@
 #' muti(x,y)
 #'
 #' ## CASE 2: mutual info at lag 1
-#' y <- x + rnorm(TT,0,0.1)
+#' y <- x + rnorm(TT,0,0.5)
 #' muti(x,y)
 #'
 #' @export
-muti <- function(x,y,n_bins=NULL,sym=TRUE,lags=seq(-4,4),mc=100,alpha=0.05,normal=TRUE) {
+muti <- function(x,y,n_bins=NULL,sym=TRUE,lags=seq(-4,4),mc=100,alpha=0.05,normal=FALSE) {
   if(is.null(n_bins)) {
     ## Sturges
     ## ceiling(log(n,2)) + 1

@@ -36,9 +36,9 @@ Data discretization
 Examples
 --------
 
-The primary output of `muti` is a data frame with the MI and associated critical value at different lags. Additionally, `muti` produces plots of the original data, symbolic data (if that option is chosen), and the MI values and associated critical value at different lags.
+The primary output of `muti` is a data frame with the MI (`MI_xy`) and respective significance threshold (`MI_ci`) at different lags. Additionally, `muti` produces plots of the original data, symbolic data (if that option is chosen), and the MI values and associated critical value at different lags.
 
-### EX 1: 2 random variables as symbolic
+### Ex 1: random variables as symbolic
 
 Here's a case where there should be very little mutual information between *X* and *Y*.
 
@@ -53,17 +53,17 @@ muti(x,y)
 ![](README_files/figure-markdown_github/ex_1-1.png)
 
     ##       lag      MI_xy     MI_ci
-    ##  [1,]  -4 0.06800523 0.3537884
-    ##  [2,]  -3 0.02230546 0.3672606
-    ##  [3,]  -2 0.02816403 0.3300176
-    ##  [4,]  -1 0.04561370 0.3298602
-    ##  [5,]   0 0.06997917 0.3306153
-    ##  [6,]   1 0.10937351 0.3235016
-    ##  [7,]   2 0.09965162 0.3544732
-    ##  [8,]   3 0.02230546 0.3719128
-    ##  [9,]   4 0.06044060 0.3726831
+    ##  [1,]  -4 0.11924284 0.6845677
+    ##  [2,]  -3 0.03907957 0.7561248
+    ##  [3,]  -2 0.04917229 0.6597224
+    ##  [4,]  -1 0.08017767 0.6634594
+    ##  [5,]   0 0.12264835 0.6689929
+    ##  [6,]   1 0.19056470 0.6668210
+    ##  [7,]   2 0.17398431 0.7129562
+    ##  [8,]   3 0.03907957 0.7355923
+    ##  [9,]   4 0.10472136 0.7153542
 
-### EX 2: 2 correlated variables as symbolic
+### Ex 2: correlated variables as symbolic
 
 Here's a case where there should be significant mutual information between *X* and *Y*.
 
@@ -75,19 +75,19 @@ muti(x,y)
 ![](README_files/figure-markdown_github/ex_2-1.png)
 
     ##       lag     MI_xy     MI_ci
-    ##  [1,]  -4 0.4152936 0.3692989
-    ##  [2,]  -3 0.3398746 0.3513658
-    ##  [3,]  -2 0.1608100 0.3795003
-    ##  [4,]  -1 0.3386468 0.3534330
-    ##  [5,]   0 0.3985352 0.3092976
-    ##  [6,]   1 0.3613144 0.2958739
-    ##  [7,]   2 0.2531284 0.2957751
-    ##  [8,]   3 0.1938644 0.3603412
-    ##  [9,]   4 0.1932648 0.3154650
+    ##  [1,]  -4 0.8055540 0.7313243
+    ##  [2,]  -3 0.6561231 0.7026832
+    ##  [3,]  -2 0.3088701 0.7169027
+    ##  [4,]  -1 0.6538114 0.6796273
+    ##  [5,]   0 0.7660774 0.6262150
+    ##  [6,]   1 0.6794669 0.5874984
+    ##  [7,]   2 0.4783460 0.5527717
+    ##  [8,]   3 0.3679923 0.6996187
+    ##  [9,]   4 0.3640055 0.5812106
 
-### EX 3: 2 correlated variables with binning
+### Ex 3: correlated variables with binning
 
-Same as above with regular binning instead of symbolic (*i.e.*, `sym=FALSE`).
+Same as Ex 2 with regular binning instead of symbolic.
 
 ``` r
 muti(x,y,sym=FALSE)
@@ -95,13 +95,34 @@ muti(x,y,sym=FALSE)
 
 ![](README_files/figure-markdown_github/ex_3-1.png)
 
+    ##       lag     MI_xy    MI_ci
+    ##  [1,]  -4 0.8294704 1.100902
+    ##  [2,]  -3 0.9811721 1.079506
+    ##  [3,]  -2 1.0291246 1.111500
+    ##  [4,]  -1 0.8342897 1.093894
+    ##  [5,]   0 1.2513074 1.046136
+    ##  [6,]   1 1.1072603 1.047516
+    ##  [7,]   2 0.9046000 1.141455
+    ##  [8,]   3 1.2774684 1.102911
+    ##  [9,]   4 0.8875386 1.116076
+
+### Ex 4: correlated variables as symbolic with normalized MI.
+
+Same as Ex 2 with MI normalized to \[0,1\].
+
+``` r
+muti(x,y,normal=TRUE)
+```
+
+![](README_files/figure-markdown_github/ex_4-1.png)
+
     ##       lag     MI_xy     MI_ci
-    ##  [1,]  -4 0.3224510 0.4511267
-    ##  [2,]  -3 0.3748662 0.4254074
-    ##  [3,]  -2 0.3896359 0.4304526
-    ##  [4,]  -1 0.3161280 0.4187598
-    ##  [5,]   0 0.4715160 0.4048228
-    ##  [6,]   1 0.4185081 0.3976365
-    ##  [7,]   2 0.3396246 0.4442861
-    ##  [8,]   3 0.4786884 0.4239227
-    ##  [9,]   4 0.3313601 0.4410315
+    ##  [1,]  -4 0.4152936 0.3587841
+    ##  [2,]  -3 0.3398746 0.3619371
+    ##  [3,]  -2 0.1608100 0.3255315
+    ##  [4,]  -1 0.3386468 0.3332333
+    ##  [5,]   0 0.3985352 0.3080167
+    ##  [6,]   1 0.3613144 0.3135927
+    ##  [7,]   2 0.2531284 0.3256593
+    ##  [8,]   3 0.1938644 0.3270083
+    ##  [9,]   4 0.1932648 0.3297892
