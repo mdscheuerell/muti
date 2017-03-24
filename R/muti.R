@@ -66,7 +66,7 @@ muti <- function(x,y,n_bins=NULL,sym=TRUE,lags=seq(-4,4),mc=100,alpha=0.05,norma
   if(class(sym)!="logical") {
     stop("'sym' must be TRUE or FALSE.\n\n")
   }
-  if(length(lags)=0 | (lags-round(lags))!=0) {
+  if(length(lags)==0 | (lags-round(lags))!=0) {
     stop("'lags' must be a single integer or a series of integers.\n\n")
   }
   if(abs(lags)>=length(x)) {
