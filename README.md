@@ -22,7 +22,7 @@ The MI between *X* and *Y* is then
 
 MI(*X*,*Y*) = *H*(*X*) + *H*(*Y*) - *H*(*X*,*Y*)
 
-where *H*(*X*,*Y*) is the joint entropy between *X* and *Y*.
+where *H*(*X*,*Y*) is the joint entropy between *X* and *Y*. `muti` uses base-2 logarithms for calculating the entropies, so MI measures information content in units of "bits".
 
 Data discretization
 -------------------
@@ -33,10 +33,15 @@ Data discretization
 
 2.  **Binned**. In this case each datum is placed into 1 of *n* equally spaced bins. If the number of bins is not specified, then it is calculated according to Rice's Rule whereby `n = ceiling(2*length(x)^(1/3))`.
 
+I/O
+---
+
+At a minimum `muti` requires two vectors of class `numeric` or `integer`. See `?muti` for all of the other function arguments.
+
+The primary output of `muti` is a data frame with the MI `MI_xy` and respective significance threshold `MI_ci` at different lags. Additionally, `muti` produces plots of the original data, symbolic data (if that option is chosen), and the MI values and associated threshold values at different lags. The significance thresholds are based on bootstraps of the original data. That process is relatively slow, so please be patient if asking for more than the default `mc=100` samples.
+
 Examples
 --------
-
-The primary output of `muti` is a data frame with the MI `MI_xy` and respective significance threshold `MI_ci` at different lags. Additionally, `muti` produces plots of the original data, symbolic data (if that option is chosen), and the MI values and associated critical value at different lags.
 
 ### Ex 1: Real values as symbolic
 
