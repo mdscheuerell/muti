@@ -59,7 +59,7 @@ plotMI <- function(x,y,MI,sym,n_bins) {
     mtext(ytxt,2,line=3)
   }
   ## right panel: mutual info
-  par(mfrow=c(3,1), omi=rep(0.1,4), mai=c(0.8,1.5,0,0))
+  par(omi=rep(0.1,4), mai=c(0.8,1.5,0,2))
   ylm <- c(0,ceiling(max(MI[,c("MI_xy","MI_ci")]/0.1,na.rm=TRUE))*0.1)
   if(dim(MI)[1] > 1) {
     matplot(MI[,"lag"],MI[,c("MI_xy","MI_ci")],type="l",lty=c("solid","dashed"),

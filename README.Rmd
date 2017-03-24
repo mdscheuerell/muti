@@ -56,7 +56,7 @@ set.seed(123)
 TT <- 30
 x <- rnorm(TT)
 y <- rnorm(TT)
-#muti(x,y)
+muti(x,y)
 ```
 
 ### 2 correlated variables
@@ -67,7 +67,7 @@ Here's a case where there should be very little mutual information between _X_ a
 set.seed(123)
 TT <- 30
 x <- rnorm(TT)
-y <- x + rnorm(TT,0,0.1)
+y <- x + rnorm(TT,0,0.3)
 muti(x,y)
 ```
 
