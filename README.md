@@ -45,7 +45,6 @@ set.seed(123)
 TT <- 30
 x <- rnorm(TT)
 y <- rnorm(TT)
-par(omi=rep(0.1,4))
 muti(x,y)
 ```
 
@@ -71,7 +70,6 @@ set.seed(123)
 TT <- 30
 x <- rnorm(TT)
 y <- x + rnorm(TT,0,0.1)
-par(omi=rep(0.1,4))
 muti(x,y)
 ```
 
