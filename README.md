@@ -1,7 +1,7 @@
 muti
 ====
 
-`muti` is an `R` package that computes the mutual information (MI) between two discrete random variables *X* and *Y*.
+`muti` is an `R` package that computes the mutual information (MI) between two discrete random variables *X* and *Y*. `muti` was developed with time series analysis in mind, but there is nothing tying the methods to a time index *per se*.
 
 You can install the development version using `devtools`.
 
@@ -86,7 +86,7 @@ muti(x,y)
     ##  [8,]   3 0.6119224 0.8451717
     ##  [9,]   4 0.7026058 0.8197471
 
-### Ex 3: correlated variables with binning
+### Ex 3: Correlated variables with binning
 
 Same as Ex 2 with regular binning instead of symbolic.
 
@@ -107,7 +107,7 @@ muti(x,y,sym=FALSE)
     ##  [8,]   3 0.7183452 0.7091359
     ##  [9,]   4 0.4081389 0.8035495
 
-### Ex 4: correlated variables as symbolic with normalized MI.
+### Ex 4: Correlated variables as symbolic with normalized MI
 
 Same as Ex 2 with MI normalized to \[0,1\]. In this case MI'(*X*,*Y*) = MI(*X*,*Y*)/sqrt(*H*(*X*)\**H*(*Y*)).
 
@@ -127,3 +127,25 @@ muti(x,y,normal=TRUE)
     ##  [7,]   2 0.2737760 0.3790230
     ##  [8,]   3 0.2885335 0.4179139
     ##  [9,]   4 0.3359142 0.4310782
+
+### Ex 5: Correlated variables at
+
+Here's an example of examining the MI of a single time series at multiple time lags.
+
+``` r
+x <- cumsum(rnorm(TT))
+muti(x[-TT],x[-1],sym=FALSE)
+```
+
+![](README_files/figure-markdown_github/ex_5-1.png)
+
+    ##       lag     MI_xy     MI_ci
+    ##  [1,]  -4 0.8530202 0.8320115
+    ##  [2,]  -3 1.0554051 1.0469995
+    ##  [3,]  -2 1.2159387 1.0047938
+    ##  [4,]  -1 1.5020663 1.1035966
+    ##  [5,]   0 1.5210534 0.8228241
+    ##  [6,]   1 2.5210688 1.2331335
+    ##  [7,]   2 1.4950352 1.0766605
+    ##  [8,]   3 1.4501998 1.1974625
+    ##  [9,]   4 1.1534112 1.0277111

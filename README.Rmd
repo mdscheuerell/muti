@@ -11,7 +11,7 @@ library(muti)
 
 # muti
 
-`muti` is an `R` package that computes the mutual information (MI) between two discrete random variables _X_ and _Y_.
+`muti` is an `R` package that computes the mutual information (MI) between two discrete random variables _X_ and _Y_. `muti` was developed with time series analysis in mind, but there is nothing tying the methods to a time index _per se_.
 
 You can install the development version using `devtools`.
 
@@ -69,7 +69,7 @@ y <- x + sample(c(-1,1),TT,replace=TRUE)
 muti(x,y)
 ```
 
-### Ex 3: correlated variables with binning
+### Ex 3: Correlated variables with binning
 
 Same as Ex 2 with regular binning instead of symbolic.
 
@@ -77,11 +77,20 @@ Same as Ex 2 with regular binning instead of symbolic.
 muti(x,y,sym=FALSE)
 ```
 
-### Ex 4: correlated variables as symbolic with normalized MI.
+### Ex 4: Correlated variables as symbolic with normalized MI
 
 Same as Ex 2 with MI normalized to [0,1]. In this case MI'(_X_,_Y_) = MI(_X_,_Y_)/sqrt(_H_(_X_)*_H_(_Y_)).
 
 ```{r ex_4, fig.width=6, fig.height=8, warning=FALSE}
 muti(x,y,normal=TRUE)
+```
+
+### Ex 5: Correlated variables at 
+
+Here's an example of examining the MI of a single time series at multiple time lags.
+
+```{r ex_5, fig.width=6, fig.height=8, warning=FALSE}
+x <- cumsum(rnorm(TT))
+muti(x[-TT],x[-1],sym=FALSE)
 ```
 
