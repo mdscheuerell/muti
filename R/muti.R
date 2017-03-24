@@ -43,15 +43,43 @@
 #'
 #' @export
 muti <- function(x,y,n_bins=NULL,sym=TRUE,lags=seq(-4,4),mc=100,alpha=0.05,normal=FALSE) {
+  ## simple error checking
+  if(length(x)!=length(y)) {
+    stop("The vectors 'x' and 'y' must be the same length.\n\n")
+  }
+  if(class(x)!="integer" | class(x)!="numeric") {
+    stop("The vector 'x' must be either 'integer' or 'numeric'.\n\n")
+  }
+  if(class(y)!="integer" | class(y)!="numeric") {
+    stop("The vector 'y' must be either 'integer' or 'numeric'.\n\n")
+  }
   if(is.null(n_bins)) {
-    ## Sturges
-    ## ceiling(log(n,2)) + 1
-    ## Scott
-    ## 3.5*sd(x)/n^(1/3)
-    ## Friedman-Diaconis
-    ## 2*IQR(x)/n^(1/3)
-    ## Rice
     n_bins <- ceiling(2*length(x)^(1/3))
+  } else {
+    if((n_bins-round(n_bins))!=0) {
+      stop("'n_bins' must be NULL or an integer.\n\n")
+    }
+    if(n_bins>=length(x)) {
+      stop("'n_bins' must be less than the length of the data.\n\n")
+    }
+  }
+  if(class(sym)!="logical") {
+    stop("'sym' must be TRUE or FALSE.\n\n")
+  }
+  if(length(lags)=0 | (lags-round(lags))!=0) {
+    stop("'lags' must be a single integer or a series of integers.\n\n")
+  }
+  if(abs(lags)>=length(x)) {
+    stop("The min/max of 'lags' must be less than the length 'x' and 'y'.\n\n")
+  }
+  if(mc<1 | (n_bins-round(n_bins))!=0) {
+    stop("'mc' must be an integer > 0.\n\n")
+  }
+  if(alpha<=0 | alpha>=1) {
+    stop("'alpha' must be between 0 and 1.")
+  }
+  if(class(normal)!="logical") {
+    stop("'normal' must be TRUE or FALSE.\n\n")
   }
   ## save x & y for later plotting
   px <- x
