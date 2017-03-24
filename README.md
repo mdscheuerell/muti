@@ -38,7 +38,7 @@ Examples
 
 The primary output of `muti` is a data frame with the MI and associated critical value at different lags. Additionally, `muti` produces plots of the original data, symbolic data (if that option is chosen), and the MI values and associated critical value at different lags.
 
-### 2 random variables as symbolic
+### EX 1: 2 random variables as symbolic
 
 Here's a case where there should be very little mutual information between *X* and *Y*.
 
@@ -63,12 +63,12 @@ muti(x,y)
     ##  [8,]   3 0.02230546 0.3719128
     ##  [9,]   4 0.06044060 0.3726831
 
-### 2 correlated variables as symbolic
+### EX 2: 2 correlated variables as symbolic
 
 Here's a case where there should be significant mutual information between *X* and *Y*.
 
 ``` r
-y <- x + rnorm(TT,0,0.3)
+y <- x + rnorm(TT,0,0.5)
 muti(x,y)
 ```
 
@@ -77,17 +77,17 @@ muti(x,y)
 ![](README_files/figure-markdown_github/ex_2-1.png)
 
     ##       lag     MI_xy     MI_ci
-    ##  [1,]  -4 0.3355358 0.3717175
-    ##  [2,]  -3 0.3521153 0.3659658
-    ##  [3,]  -2 0.3805507 0.3325559
-    ##  [4,]  -1 0.5410277 0.3069245
-    ##  [5,]   0 0.6405696 0.2788940
-    ##  [6,]   1 0.4420608 0.3056674
-    ##  [7,]   2 0.2531284 0.3125187
-    ##  [8,]   3 0.2179978 0.3396132
-    ##  [9,]   4 0.1743555 0.3676712
+    ##  [1,]  -4 0.4152936 0.3692989
+    ##  [2,]  -3 0.3398746 0.3513658
+    ##  [3,]  -2 0.1608100 0.3795003
+    ##  [4,]  -1 0.3386468 0.3534330
+    ##  [5,]   0 0.3985352 0.3092976
+    ##  [6,]   1 0.3613144 0.2958739
+    ##  [7,]   2 0.2531284 0.2957751
+    ##  [8,]   3 0.1938644 0.3603412
+    ##  [9,]   4 0.1932648 0.3154650
 
-### 2 correlated variables with binning
+### EX 3: 2 correlated variables with binning
 
 Same as above with regular binning instead of symbolic (*i.e.*, `sym=FALSE`).
 
@@ -100,12 +100,12 @@ muti(x,y,sym=FALSE)
 ![](README_files/figure-markdown_github/ex_3-1.png)
 
     ##       lag     MI_xy     MI_ci
-    ##  [1,]  -4 0.4501135 0.4368582
-    ##  [2,]  -3 0.4109704 0.4476704
-    ##  [3,]  -2 0.3230329 0.4072304
-    ##  [4,]  -1 0.3672059 0.4080026
-    ##  [5,]   0 0.6009206 0.4261906
-    ##  [6,]   1 0.3841255 0.4269563
-    ##  [7,]   2 0.3597277 0.4372735
-    ##  [8,]   3 0.4653827 0.4476501
-    ##  [9,]   4 0.3391820 0.4562120
+    ##  [1,]  -4 0.3224510 0.4511267
+    ##  [2,]  -3 0.3748662 0.4254074
+    ##  [3,]  -2 0.3896359 0.4304526
+    ##  [4,]  -1 0.3161280 0.4187598
+    ##  [5,]   0 0.4715160 0.4048228
+    ##  [6,]   1 0.4185081 0.3976365
+    ##  [7,]   2 0.3396246 0.4442861
+    ##  [8,]   3 0.4786884 0.4239227
+    ##  [9,]   4 0.3313601 0.4410315
