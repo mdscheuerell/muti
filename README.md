@@ -3,7 +3,7 @@ muti
 
 `muti` is an `R` package that computes the mutual information (MI) between two discrete random variables *X* and *Y*.
 
-You can install the development version with
+You can install the development version using `devtools`.
 
     if(!require("devtools")) {
       install.packages("devtools")
@@ -14,7 +14,7 @@ You can install the development version with
 Background
 ----------
 
-MI is the amount of information about one variable contained in the other; it can be thought of as a nonparametric measure of the covariance between the two variables. MI is a function of entropy, which is the expected amount of information contained in a variable. If *P*(*X*) is the probability mass function of *X*, then the entropy of *X* is
+MI estimates the amount of information about one variable contained in another; it can be thought of as a nonparametric measure of the covariance between the two variables. MI is a function of entropy, which is the expected amount of information contained in a variable. If *P*(*X*) is the probability mass function of *X*, then the entropy of *X* is
 
 *H*(*X*) = E\[-ln(P(X))\].
 
@@ -36,7 +36,7 @@ Data discretization
 Examples
 --------
 
-The primary output of `muti` is a data frame with the MI (`MI_xy`) and respective significance threshold (`MI_ci`) at different lags. Additionally, `muti` produces plots of the original data, symbolic data (if that option is chosen), and the MI values and associated critical value at different lags.
+The primary output of `muti` is a data frame with the MI `MI_xy` and respective significance threshold `MI_ci` at different lags. Additionally, `muti` produces plots of the original data, symbolic data (if that option is chosen), and the MI values and associated critical value at different lags.
 
 ### Ex 1: Real values as symbolic
 
@@ -109,7 +109,7 @@ muti(x,y,sym=FALSE)
 
 ### Ex 4: correlated variables as symbolic with normalized MI.
 
-Same as Ex 2 with MI normalized to \[0,1\].
+Same as Ex 2 with MI normalized to \[0,1\]. In this case MI'(*X*,*Y*) = MI(*X*,*Y*)/sqrt(*H*(*X*)\**H*(*Y*)).
 
 ``` r
 muti(x,y,normal=TRUE)
