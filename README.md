@@ -35,3 +35,57 @@ Data discretization
 
 Examples
 --------
+
+The primary output of `muti` is a data frame with the MI and associated critical value at different lags. Additionally, `muti` produces plots of the original data, symbolic data (if that option is chosen), and the MI values and associated critical value at different lags.
+
+### 2 random variables
+
+``` r
+set.seed(123)
+TT <- 30
+x <- rnorm(TT)
+y <- rnorm(TT)
+par(omi=rep(0.1,4))
+muti(x,y)
+```
+
+<img src="README_files/figure-markdown_github/ex_1-1.png" width="100%" height="100%" />
+
+    ##       lag      MI_xy     MI_ci
+    ##  [1,]  -5 0.08322984 0.3778558
+    ##  [2,]  -4 0.06800523 0.3269938
+    ##  [3,]  -3 0.02230546 0.3857086
+    ##  [4,]  -2 0.02816403 0.3426943
+    ##  [5,]  -1 0.04561370 0.3438173
+    ##  [6,]   0 0.06997917 0.3032215
+    ##  [7,]   1 0.10937351 0.2795474
+    ##  [8,]   2 0.09965162 0.3470183
+    ##  [9,]   3 0.02230546 0.3344613
+    ## [10,]   4 0.06044060 0.3512004
+    ## [11,]   5 0.06156946 0.3807038
+
+### 2 correlated variables
+
+``` r
+set.seed(123)
+TT <- 30
+x <- rnorm(TT)
+y <- x + rnorm(TT,0,0.1)
+par(omi=rep(0.1,4))
+muti(x,y)
+```
+
+<img src="README_files/figure-markdown_github/ex_2-1.png" width="100%" height="100%" />
+
+    ##       lag     MI_xy     MI_ci
+    ##  [1,]  -5 0.2780756 0.4023652
+    ##  [2,]  -4 0.2196129 0.3381732
+    ##  [3,]  -3 0.2375794 0.3387626
+    ##  [4,]  -2 0.2722575 0.3431813
+    ##  [5,]  -1 0.4176067 0.3332385
+    ##  [6,]   0 0.6166387 0.2824207
+    ##  [7,]   1 0.3996744 0.3104196
+    ##  [8,]   2 0.1807963 0.3326402
+    ##  [9,]   3 0.2162810 0.3788712
+    ## [10,]   4 0.2416187 0.3505441
+    ## [11,]   5 0.1783442 0.3472656

@@ -25,7 +25,7 @@ plotMI <- function(x,y,MI,sym,n_bins) {
   ## fig1 is raw data
   ## fig2 is symbolic/discrete data
   ## fig3 is mutual info
-  layout(matrix(c(1,2,0,3),2,2), c(lcm(10),lcm(7)), c(lcm(7),lcm(7)), TRUE)
+  layout(matrix(c(1,2,0,3),2,2), c(lcm(7),lcm(5)), c(lcm(5),lcm(5)), TRUE)
   ## top panel: orig ts
   par(mai=c(1,1.5,0,0.1))
   matplot(seq(n), xy, type="b", pch=c('x','y'), lty="solid", col=clr,

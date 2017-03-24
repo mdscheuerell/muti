@@ -6,6 +6,7 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(muti)
 ```
 
 # muti
@@ -43,4 +44,29 @@ where _H_(_X_,_Y_) is the joint entropy between _X_ and _Y_.
 2. __Binned__. In this case each datum is placed into 1 of _n_ equally spaced bins. If the number of bins is not specified, then it is calculated according to Rice's Rule whereby `n = ceiling(2*length(x)^(1/3))`.
 
 ## Examples
+
+The primary output of `muti` is a data frame with the MI and associated critical value at different lags. Additionally, `muti` produces plots of the  original data, symbolic data (if that option is chosen), and the MI values and associated critical value at different lags.
+
+### 2 random variables
+
+```{r ex_1, out.width='100%', out.height='100%'}
+set.seed(123)
+TT <- 30
+x <- rnorm(TT)
+y <- rnorm(TT)
+par(omi=rep(0.1,4))
+muti(x,y)
+```
+
+### 2 correlated variables
+
+```{r ex_2, out.width='100%', out.height='100%'}
+set.seed(123)
+TT <- 30
+x <- rnorm(TT)
+y <- x + rnorm(TT,0,0.1)
+par(omi=rep(0.1,4))
+muti(x,y)
+```
+
 
