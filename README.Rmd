@@ -68,28 +68,28 @@ muti(x,y)
 Here's an example with significant correlation between two integer vectors.
 
 ```{r ex_2, fig.width=6, fig.height=8, warning=FALSE}
-x <- rpois(TT,4)
-y <- x + sample(c(-1,1),TT,replace=TRUE)
+x2 <- rpois(TT,4)
+y2 <- x2 + sample(c(-1,1),TT,replace=TRUE)
 muti(x,y)
 ```
 
-### Ex 3: Correlated variables with binning
+### Ex 3: Real values as symbolic with normalized MI
 
-Same as Ex 2 with regular binning instead of symbolic.
+Same as Ex 1 with MI normalized to [0,1]. In this case MI'(_X_,_Y_) = MI(_X_,_Y_)/sqrt(_H_(_X_)*_H_(_Y_)).
 
 ```{r ex_3, fig.width=6, fig.height=8, warning=FALSE}
-muti(x,y,sym=FALSE)
-```
-
-### Ex 4: Correlated variables as symbolic with normalized MI
-
-Same as Ex 2 with MI normalized to [0,1]. In this case MI'(_X_,_Y_) = MI(_X_,_Y_)/sqrt(_H_(_X_)*_H_(_Y_)).
-
-```{r ex_4, fig.width=6, fig.height=8, warning=FALSE}
 muti(x,y,normal=TRUE)
 ```
 
-### Ex 5: Correlated variables at 
+### Ex 4: Real values with binning
+
+Same as Ex 1 with regular binning instead of symbolic.
+
+```{r ex_4, fig.width=6, fig.height=8, warning=FALSE}
+muti(x,y,sym=FALSE)
+```
+
+### Ex 5: Autocorrelation
 
 Here's an example of examining the MI of a single time series at multiple time lags.
 
