@@ -42,3 +42,5 @@ where _H_(_X_,_Y_) is the joint entropy between _X_ and _Y_.
 
 2. __Binned__. In this case each datum is placed into 1 of _n_ equally spaced bins. If the number of bins is not specified, then it is calculated according to Rice's Rule whereby `n = ceiling(2*length(x)^(1/3))`.
 
+## Examples
+
