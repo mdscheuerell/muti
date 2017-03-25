@@ -47,10 +47,10 @@ muti <- function(x,y,n_bins=NULL,sym=TRUE,lags=seq(-4,4),mc=100,alpha=0.05,norma
   if(length(x)!=length(y)) {
     stop("The vectors 'x' and 'y' must be the same length.\n\n")
   }
-  if(class(x)!="integer" | class(x)!="numeric") {
+  if(class(x)!="integer" & class(x)!="numeric") {
     stop("The vector 'x' must be either 'integer' or 'numeric'.\n\n")
   }
-  if(class(y)!="integer" | class(y)!="numeric") {
+  if(class(y)!="integer" & class(y)!="numeric") {
     stop("The vector 'y' must be either 'integer' or 'numeric'.\n\n")
   }
   if(is.null(n_bins)) {
@@ -66,10 +66,10 @@ muti <- function(x,y,n_bins=NULL,sym=TRUE,lags=seq(-4,4),mc=100,alpha=0.05,norma
   if(class(sym)!="logical") {
     stop("'sym' must be TRUE or FALSE.\n\n")
   }
-  if(length(lags)==0 | (lags-round(lags))!=0) {
+  if(length(lags)==0 | any((lags-round(lags))!=0)) {
     stop("'lags' must be a single integer or a series of integers.\n\n")
   }
-  if(abs(lags)>=length(x)) {
+  if(any(abs(lags)>=length(x))) {
     stop("The min/max of 'lags' must be less than the length 'x' and 'y'.\n\n")
   }
   if(mc<1 | (n_bins-round(n_bins))!=0) {
