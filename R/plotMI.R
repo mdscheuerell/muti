@@ -11,6 +11,8 @@
 #'
 #' @return Plots of original vectors, (potential) symbolic values, and the mutual information at multiple lags.
 #'
+#' @importFrom graphics abline axis layout lcm matplot mtext par plot
+#'
 #' @export
 plotMI <- function(x,y,MI,sym,n_bins) {
   ## function to plot original & symbolic ts (is desired), plus mutual info
@@ -23,17 +25,20 @@ plotMI <- function(x,y,MI,sym,n_bins) {
   ## fig1 is raw data
   ## fig2 is symbolic/discrete data
   ## fig3 is mutual info
-  layout(matrix(c(1,2,0,3),2,2), c(lcm(10),lcm(7)), c(lcm(7),lcm(7)), TRUE)
+  split.screen(c(3,1))
+  split.screen(c(1,2),screen=3)
   ## top panel: orig ts
-  par(mai=c(1,1.5,0,0.1))
+  screen(1)
+  par(mai=c(1,1.5,0.1,0.1), omi=rep(0.1,4))
   matplot(seq(n), xy, type="b", pch=c('x','y'), lty="solid", col=clr,
           xlab="Time", cex.axis=0.8,
           ylab="")
   ytxt <- expression(paste("Raw data (",italic(x[t]) *","* italic(y[t]),")",sep=""))
   mtext(ytxt,2,line=3)
   if(sym) {
-    ## bottom panel: symbolic ts
-    par(mai=c(1,1.5,0,0.1))
+    ## middle panel: symbolic ts
+    screen(2)
+    par(mai=c(1,1.5,0,0.1), omi=rep(0.1,4))
     matplot(seq(n), symbolize(xy), type="b", pch=c('s','u'), lty="solid", col=clr,
             xlab="Time", cex.axis=0.8,
             ylab="", yaxt="n")
@@ -41,8 +46,9 @@ plotMI <- function(x,y,MI,sym,n_bins) {
     ytxt <- expression(paste("Symbolic data (",italic(s[t]) *","* italic(u[t]),")",sep=""))
     mtext(ytxt,2,line=6)
   } else {
-    ## bottom panel: discretized ts
-    par(mai=c(1,1.5,0,0.1))
+    ## middle panel: discretized ts
+    screen(2)
+    par(mai=c(1,1.5,0.1,0.1), omi=rep(0.1,4))
     x <- transM(x,n_bins)$xn[,"hin"]
     y <- transM(y,n_bins)$xn[,"hin"]
     matplot(seq(n), cbind(x,y), type="b", pch=c('s','u'), lty="solid", col=clr,
@@ -52,20 +58,21 @@ plotMI <- function(x,y,MI,sym,n_bins) {
     ytxt <- expression(paste("Discrete data (",italic(s[t]) *","* italic(u[t]),")",sep=""))
     mtext(ytxt,2,line=3)
   }
-  ## right panel: mutual info
-  par(mai=c(1,1,0,0.1))
-  ylm <- c(0,ceiling(max(MI[,c("Ixy","Ici")]/0.1,na.rm=TRUE))*0.1)
+  ## bottom panel: mutual info
+  screen(4)
+  par(mai=c(1,1.5,0.1,0.1), omi=rep(0.1,4))
+  ylm <- c(0,ceiling(max(MI[,c("MI_xy","MI_ci")]/0.1,na.rm=TRUE))*0.1)
   if(dim(MI)[1] > 1) {
-    matplot(MI[,"lag"],MI[,c("Ixy","Ici")],type="l",lty=c("solid","dashed"),
-            lwd=c(2,1),ylim=ylm,col="black",
+    matplot(MI[,"lag"],MI[,c("MI_xy","MI_ci")],type="l",lty=c("solid","dashed"),
+            lwd=c(2,1), ylim=ylm, col="black",
             xlab="Lag", cex.axis=0.8,
             ylab="")
   } else {
-    plot(MI[,"lag"],MI[,"Ixy"], pch=16,
+    plot(MI[,"lag"], MI[,"MI_xy"], pch=16,
          ylim=ylm, col="black",
          xlab="Lag", cex.axis=0.8,
          ylab="")
-    abline(h=MI[,"Ici"], lty="dashed")
+    abline(h=MI[,"MI_ci"], lty="dashed")
   }
   if(sym) {
     ytxt <- expression(paste("Mutual information (",italic(MI[su]),")",sep=""))

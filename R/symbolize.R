@@ -26,8 +26,10 @@ symbolize <- function(xy) {
       if(any(is.na(xy[(t-1):(t+1),i]))) { su[t,i] <- NA }
       ## else get correct symbol
       else {
-        ## same
-        if(xy[t,i] == xy[t-1,i]) { su[t,i] <- 3 }
+        if(xy[t,i] == xy[t-1,i] & xy[t,i] == xy[t+1,i]) {
+          ## same
+          su[t,i] <- 3
+          }
         if(xy[t,i] > xy[t-1,i]) {
           ## peak
           if(xy[t,i] > xy[t+1,i]) { su[t,i] <- 5 }
