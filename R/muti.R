@@ -20,10 +20,11 @@
 #'   information based on the entropies. See 'Details."
 #'
 #' @return A \code{data.frame} with columns for lag (\code{lag}), mutual
-#'   information between x & y (\code{MI_xy}), and the upper confidence bound
-#'   (\code{MI_ci}). Note that the lower bound for MI is 0. Plots of x & y,
-#'   their symbolic values (if desired), and the mutual information at multiple
-#'   lags.
+#'   information between x & y (\code{MI_xy}), and the threshold value
+#'   (\code{MI_tv}) above which the MI is signficant at the specified alpha.
+#'   Note that the lower bound for MI is 0. Also returns plots of x & y (top),
+#'   their discrete values (middle), and the mutual information at specified
+#'   lags (bottom).
 #'
 #' @examples
 #' set.seed(123)
@@ -91,7 +92,7 @@ muti <- function(x,y,n_bins=NULL,sym=TRUE,lags=seq(-4,4),mc=100,alpha=0.05,norma
   }
   ## init results matrix
   MI <- matrix(NA,length(lags),3)
-  colnames(MI) <- c("lag","MI_xy","MI_ci")
+  colnames(MI) <- c("lag","MI_xy","MI_tv")
   MI[,"lag"] <- lags
   ## init counter
   cnt <- 1
@@ -128,7 +129,7 @@ muti <- function(x,y,n_bins=NULL,sym=TRUE,lags=seq(-4,4),mc=100,alpha=0.05,norma
         if(sym) { mcr[j] <- mutual_info(symbolize(xy),normal) }
         else { mcr[j] <- mutual_info(xy,normal) }
       }
-      MI[cnt,"MI_ci"] <- sort(mcr)[round((1-alpha)*mc)]
+      MI[cnt,"MI_tv"] <- sort(mcr)[round((1-alpha)*mc)]
     }
     ## increment counter
     cnt <- cnt + 1

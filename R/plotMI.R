@@ -61,9 +61,9 @@ plotMI <- function(x,y,MI,sym,n_bins) {
   ## bottom panel: mutual info
   screen(4)
   par(mai=c(1,1.5,0.1,0.1), omi=rep(0.1,4))
-  ylm <- c(0,ceiling(max(MI[,c("MI_xy","MI_ci")]/0.1,na.rm=TRUE))*0.1)
+  ylm <- c(0,ceiling(max(MI[,c("MI_xy","MI_tv")]/0.1,na.rm=TRUE))*0.1)
   if(dim(MI)[1] > 1) {
-    matplot(MI[,"lag"],MI[,c("MI_xy","MI_ci")],type="l",lty=c("solid","dashed"),
+    matplot(MI[,"lag"],MI[,c("MI_xy","MI_tv")],type="l",lty=c("solid","dashed"),
             lwd=c(2,1), ylim=ylm, col="black",
             xlab="Lag", cex.axis=0.8,
             ylab="")
@@ -72,13 +72,13 @@ plotMI <- function(x,y,MI,sym,n_bins) {
          ylim=ylm, col="black",
          xlab="Lag", cex.axis=0.8,
          ylab="")
-    abline(h=MI[,"MI_ci"], lty="dashed")
+    abline(h=MI[,"MI_tv"], lty="dashed")
   }
-  close.screen(all.screens = TRUE)
   if(sym) {
     ytxt <- expression(paste("Mutual information (",italic(MI[su]),")",sep=""))
   } else {
     ytxt <- expression(paste("Mutual information (",italic(MI[xy]),")",sep=""))
   }
   mtext(ytxt,2,line=3)
+  close.screen(all.screens = TRUE)
 } ## end function

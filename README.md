@@ -38,7 +38,7 @@ I/O
 
 At a minimum `muti` requires two vectors of class `numeric` or `integer`. See `?muti` for all of the other function arguments.
 
-The primary output of `muti` is a data frame with the MI `MI_xy` and respective significance threshold `MI_ci` at different lags. Additionally, `muti` produces plots of the original data, symbolic data (if that option is chosen), and the MI values and associated threshold values at different lags. The significance thresholds are based on bootstraps of the original data. That process is relatively slow, so please be patient if asking for more than the default `mc=100` samples.
+The output of `muti` is a data frame with the MI `MI_xy` and respective significance threshold value `MI_tv` at different lags. Additionally, `muti` produces plots of the original data (top), discretized data (middle), and the MI values (solid line) and associated threshold values (dashed line) at different lags (bottom). The significance thresholds are based on bootstraps of the original data. That process is relatively slow, so please be patient if asking for more than the default `mc=100` samples.
 
 Examples
 --------
@@ -57,7 +57,7 @@ muti(x,y)
 
 ![](README_files/figure-markdown_github/ex_1-1.png)
 
-    ##       lag     MI_xy     MI_ci
+    ##       lag     MI_xy     MI_tv
     ##  [1,]  -4 0.3122401 0.6396689
     ##  [2,]  -3 0.5477111 0.5896470
     ##  [3,]  -2 0.4896244 0.5868193
@@ -80,7 +80,7 @@ muti(x,y)
 
 ![](README_files/figure-markdown_github/ex_2-1.png)
 
-    ##       lag     MI_xy     MI_ci
+    ##       lag     MI_xy     MI_tv
     ##  [1,]  -4 0.3122401 0.6140055
     ##  [2,]  -3 0.5477111 0.5114544
     ##  [3,]  -2 0.4896244 0.6018144
@@ -101,7 +101,7 @@ muti(x,y,normal=TRUE)
 
 ![](README_files/figure-markdown_github/ex_3-1.png)
 
-    ##       lag      MI_xy     MI_ci
+    ##       lag      MI_xy     MI_tv
     ##  [1,]  -4 0.16712589 0.3708226
     ##  [2,]  -3 0.28904789 0.3110627
     ##  [3,]  -2 0.26046030 0.3079110
@@ -122,7 +122,7 @@ muti(x,y,sym=FALSE)
 
 ![](README_files/figure-markdown_github/ex_4-1.png)
 
-    ##       lag     MI_xy    MI_ci
+    ##       lag     MI_xy    MI_tv
     ##  [1,]  -4 0.8820883 1.055511
     ##  [2,]  -3 0.8889416 1.041745
     ##  [3,]  -2 1.1275134 1.018997
@@ -144,7 +144,7 @@ muti(x,x,sym=FALSE)
 
 ![](README_files/figure-markdown_github/ex_5-1.png)
 
-    ##       lag    MI_xy     MI_ci
+    ##       lag    MI_xy     MI_tv
     ##  [1,]  -4 1.115811 1.1148577
     ##  [2,]  -3 1.433014 1.0737790
     ##  [3,]  -2 1.475204 1.0152812

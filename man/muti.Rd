@@ -33,10 +33,11 @@ information based on the entropies. See 'Details."}
 }
 \value{
 A \code{data.frame} with columns for lag (\code{lag}), mutual
-  information between x & y (\code{MI_xy}), and the upper confidence bound
-  (\code{MI_ci}). Note that the lower bound for MI is 0. Plots of x & y,
-  their symbolic values (if desired), and the mutual information at multiple
-  lags.
+  information between x & y (\code{MI_xy}), and the threshold value
+  (\code{MI_tv}) above which the MI is signficant at the specified alpha.
+  Note that the lower bound for MI is 0. Also returns plots of x & y (top),
+  their discrete values (middle), and the mutual information at specified
+  lags (bottom).
 }
 \description{
 \code{muti} calculates the mutual information between two vectors and plots

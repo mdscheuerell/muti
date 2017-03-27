@@ -47,7 +47,7 @@ where _H_(_X_,_Y_) is the joint entropy between _X_ and _Y_. `muti` uses base-2 
 
 At a minimum `muti` requires two vectors of class `numeric` or `integer`. See `?muti` for all of the other function arguments.
 
-The primary output of `muti` is a data frame with the MI `MI_xy` and respective significance threshold `MI_ci` at different lags. Additionally, `muti` produces plots of the  original data, symbolic data (if that option is chosen), and the MI values and associated threshold values at different lags. The significance thresholds are based on bootstraps of the original data. That process is relatively slow, so please be patient if asking for more than the default `mc=100` samples.
+The output of `muti` is a data frame with the MI `MI_xy` and respective significance threshold value `MI_tv` at different lags. Additionally, `muti` produces plots of the original data (top), discretized data (middle), and the MI values (solid line) and associated threshold values (dashed line) at different lags (bottom). The significance thresholds are based on bootstraps of the original data. That process is relatively slow, so please be patient if asking for more than the default `mc=100` samples.
 
 ## Examples
 
