@@ -74,6 +74,7 @@ plotMI <- function(x,y,MI,sym,n_bins) {
          ylab="")
     abline(h=MI[,"MI_ci"], lty="dashed")
   }
+  close.screen(all.screens = TRUE)
   if(sym) {
     ytxt <- expression(paste("Mutual information (",italic(MI[su]),")",sep=""))
   } else {
