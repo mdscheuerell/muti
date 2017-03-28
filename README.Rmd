@@ -58,9 +58,9 @@ Here's an example with significant correlation between two numeric vectors. Noti
 ```{r ex_1, fig.width=6, fig.height=8, warning=FALSE}
 set.seed(123)
 TT <- 30
-x <- rnorm(TT)
-y <- x + rnorm(TT)
-muti(x,y)
+x1 <- rnorm(TT)
+y1 <- x1 + rnorm(TT)
+muti(x1,y1)
 ```
 
 ### Ex 2: Integer values as symbolic
@@ -70,7 +70,7 @@ Here's an example with significant correlation between two integer vectors.
 ```{r ex_2, fig.width=6, fig.height=8, warning=FALSE}
 x2 <- rpois(TT,4)
 y2 <- x2 + sample(c(-1,1),TT,replace=TRUE)
-muti(x,y)
+muti(x2,y2)
 ```
 
 ### Ex 3: Real values as symbolic with normalized MI
@@ -78,7 +78,7 @@ muti(x,y)
 Same as Ex 1 with MI normalized to [0,1]. In this case MI'(_X_,_Y_) = MI(_X_,_Y_)/sqrt(_H_(_X_)*_H_(_Y_)).
 
 ```{r ex_3, fig.width=6, fig.height=8, warning=FALSE}
-muti(x,y,normal=TRUE)
+muti(x1,y1,normal=TRUE)
 ```
 
 ### Ex 4: Real values with binning
@@ -86,7 +86,7 @@ muti(x,y,normal=TRUE)
 Same as Ex 1 with regular binning instead of symbolic.
 
 ```{r ex_4, fig.width=6, fig.height=8, warning=FALSE}
-muti(x,y,sym=FALSE)
+muti(x1,y1,sym=FALSE)
 ```
 
 ### Ex 5: Autocorrelation
@@ -94,7 +94,7 @@ muti(x,y,sym=FALSE)
 Here's an example of examining the MI of a single time series at multiple time lags.
 
 ```{r ex_5, fig.width=6, fig.height=8, warning=FALSE}
-x <- cumsum(rnorm(TT))
-muti(x,x,sym=FALSE)
+x3 <- cumsum(rnorm(TT))
+muti(x3,x3,sym=FALSE)
 ```
 
