@@ -15,7 +15,6 @@
 #'
 #' @importFrom stats runif
 #'
-#' @export
 transM <- function(x,n_bins) {
   ## helper function for estimating transition matrix used in
   ## creating resampled ts for the CI on mutual info

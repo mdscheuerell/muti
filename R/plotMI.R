@@ -13,7 +13,6 @@
 #'
 #' @importFrom graphics abline axis close.screen matplot mtext par plot screen split.screen
 #'
-#' @export
 plotMI <- function(x,y,MI,sym,n_bins) {
   ## function to plot original & symbolic ts (is desired), plus mutual info
   ## between 2 ts at varying lags
