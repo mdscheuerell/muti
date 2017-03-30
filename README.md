@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mdscheuerell/muti.svg?branch=master)](https://travis-ci.org/mdscheuerell/muti)
+
 muti
 ====
 

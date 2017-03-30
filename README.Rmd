@@ -9,6 +9,8 @@ knitr::opts_chunk$set(echo = TRUE)
 library(muti)
 ```
 
+[![Build Status](https://travis-ci.org/mdscheuerell/muti.svg?branch=master)](https://travis-ci.org/mdscheuerell/muti)
+
 # muti
 
 `muti` is an `R` package that computes the mutual information (MI) between two discrete random variables _X_ and _Y_. `muti` was developed with time series analysis in mind, but there is nothing tying the methods to a time index _per se_.
