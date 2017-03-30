@@ -31,7 +31,7 @@ Data discretization
 
 1.  **Symbolic**. In this case the *i*-th datum is converted to 1 of 5 symbolic representations (*i.e.*, "peak", "decreasing", "same", "trough", "increasing") based on its value relative to the *i*-1 and *i*+1 values (see [Cazelles 2004](https://doi.org/10.1111/j.1461-0248.2004.00629.x) for details). Thus, the resulting symbolic vector is 2 values shorter than its original vector. For example, if the original vector was `c(1.2,2.1,3.3,1.1,3.1,2.2)`, then its symbolic vector for values 2-5 would be `c("increasing","peak","trough","peak")`.
 
-2.  **Binned**. In this case each datum is placed into 1 of *n* equally spaced bins. If the number of bins is not specified, then it is calculated according to Rice's Rule whereby for a vector `x`, `n = ceiling(2*length(x)^(1/3))`.
+2.  **Binned**. In this case each datum is placed into 1 of *n* equally spaced bins. If the number of bins is not specified, then it is calculated according to Rice's Rule whereby for vectors `x` and `y` with `length(x)==length(y)`, `n = ceiling(2*length(x)^(1/3))`.
 
 I/O
 ---
@@ -40,11 +40,11 @@ At a minimum `muti` requires two vectors of class `numeric` or `integer`. See `?
 
 The output of `muti` is a data frame with the MI `MI_xy` and respective significance threshold value `MI_tv` at different lags. Note that a negative (positive) lag means *X* leads (trails) *Y*. For example, if comparing vectors `x` and `y` that were both `TT` units long, then the MI at a lag of -1 would be based on `x[1:(TT-1)]` and `y[2:TT]`.
 
-Additionally, `muti` produces 3 plots:
+Additionally, `muti` produces 3 plots of
 
-1.  The original data (top);
-2.  Their symbolic or discretized form (middle);
-3.  MI values (solid line) and associated threshold values (dashed line) at different lags (bottom).
+1.  the original data (top);
+2.  their symbolic or discretized form (middle);
+3.  MI values (solid line) and their associated threshold values (dashed line) at different lags (bottom).
 
 The significance thresholds are based on bootstraps of the original data. That process is relatively slow, so please be patient if asking for more than the default `mc=100` samples.
 
