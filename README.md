@@ -29,16 +29,16 @@ Data discretization
 
 `muti` computes MI based on 1 of 2 possible discretizations of the data:
 
-1.  **Symbolic**. In this case the *i*-th datum is converted to 1 of 5 symbolic representations (*i.e.*, "peak", "decreasing", "same", "trough", "increasing") based on its value relative to the *i*-1 and *i*+1 values (see [Cazelles 2004](https://doi.org/10.1111/j.1461-0248.2004.00629.x) for details). Thus, the resulting symbolic vector is 2 values shorter than its original vector. For example, if the original vector was `c(1.2,2.1,3.3,1.1,3.1,2.2)`, then its symbolic vector for values 2-5 would be `c("increasing","peak","trough","peak")`.
+1.  **Symbolic**. In this case the *i*-th datum is converted to 1 of 5 symbolic representations (*i.e.*, "peak", "decreasing", "same", "trough", "increasing") based on its value relative to the *i*-1 and *i*+1 values (see [Cazelles 2004](https://doi.org/10.1111/j.1461-0248.2004.00629.x) for details). Thus, the first and last values are undefined and the resulting symbolic vector is 2 values shorter than its original vector. For example, if the original vector was `c(1.1,2.1,3.3,1.2,3.1)`, then its symbolic vector would be `c("increasing","peak","trough")`.
 
-2.  **Binned**. In this case each datum is placed into 1 of *n* equally spaced bins. If the number of bins is not specified, then it is calculated according to Rice's Rule whereby for vectors `x` and `y` with `length(x)==length(y)`, `n = ceiling(2*length(x)^(1/3))`.
+2.  **Binned**. In this case each datum is placed into 1 of *n* equally spaced bins. If the number of bins is not specified, then it is calculated according to Rice's Rule whereby for vectors `x` and `y` of length `L`, `n = ceiling(2*L^(1/3))`.
 
 I/O
 ---
 
-At a minimum `muti` requires two vectors of class `numeric` or `integer`. See `?muti` for all of the other function arguments.
+**Input**. At a minimum `muti` requires two vectors of class `numeric` or `integer`. See `?muti` for all of the other function arguments.
 
-The output of `muti` is a data frame with the MI `MI_xy` and respective significance threshold value `MI_tv` at different lags. Note that a negative (positive) lag means *X* leads (trails) *Y*. For example, if comparing vectors `x` and `y` that were both `TT` units long, then the MI at a lag of -1 would be based on `x[1:(TT-1)]` and `y[2:TT]`.
+**Output**. The output of `muti` is a data frame with the MI `MI_xy` and respective significance threshold value `MI_tv` at different lags. Note that a negative (positive) lag means *X* leads (trails) *Y*. For example, if comparing vectors `x` and `y` that were both `TT` units long, then the MI at a lag of -1 would be based on `x[1:(TT-1)]` and `y[2:TT]`.
 
 Additionally, `muti` produces 3 plots of
 
@@ -78,7 +78,7 @@ muti(x1, y1)
 
 ### Ex 2: Integer values as symbolic
 
-Here's an example with significant correlation between two integer vectors.
+Here's an example with significant correlation between two integer vectors. Notice that in this case some of the symbolic values are the "same".
 
 ``` r
 x2 <- rpois(TT,4)
@@ -101,7 +101,7 @@ muti(x2, y2)
 
 ### Ex 3: Real values as symbolic with normalized MI
 
-Same as Ex 1 with MI normalized to \[0,1\]. In this case MI'(*X*,*Y*) = MI(*X*,*Y*)/sqrt(*H*(*X*)\**H*(*Y*)).
+Here are the same data as Ex 1 but with MI normalized to \[0,1\] (`normal = TRUE`). In this case MI'(*X*,*Y*) = MI(*X*,*Y*)/sqrt(*H*(*X*)\**H*(*Y*)).
 
 ``` r
 muti(x1, y1, normal = TRUE)
@@ -122,7 +122,7 @@ muti(x1, y1, normal = TRUE)
 
 ### Ex 4: Real values with binning
 
-Same as Ex 1 with regular binning instead of symbolic.
+Here are the same data as Ex 1 but with regular binning instead of symbolic (`sym = FALSE`).
 
 ``` r
 muti(x1, y1, sym = FALSE)
