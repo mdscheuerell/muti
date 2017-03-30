@@ -13,6 +13,8 @@ library(muti)
 
 `muti` is an `R` package that computes the mutual information (MI) between two discrete random variables _X_ and _Y_. `muti` was developed with time series analysis in mind, but there is nothing tying the methods to a time index _per se_.
 
+[![DOI](https://zenodo.org/badge/85351399.svg)](https://zenodo.org/badge/latestdoi/85351399)
+
 ## Installation
 
 You can install the development version using `devtools`.
