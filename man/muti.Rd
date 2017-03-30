@@ -60,4 +60,3 @@ y <- x + rnorm(TT,0,0.5)
 muti(x,y)
 
 }
-

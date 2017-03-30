@@ -17,4 +17,3 @@ A vector of resampled values.
 \description{
 \code{newZ} creates new vector based on transition matrix.
 }
-

@@ -16,4 +16,3 @@ based on the i-1 and i+1 values, is a "trough" (=1), "decrease" (=2), "same" (=3
 \description{
 \code{symbolize} converts a numeric vector into a symbolic vector.
 }
-

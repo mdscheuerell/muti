@@ -41,13 +41,21 @@ where _H_(_X_,_Y_) is the joint entropy between _X_ and _Y_. `muti` uses base-2 
 
 1. __Symbolic__. In this case the _i_-th datum is converted to 1 of 5 symbolic representations (_i.e._, "peak", "decreasing", "same", "trough", "increasing") based on its value relative to the _i_-1 and _i_+1 values (see [Cazelles 2004](https://doi.org/10.1111/j.1461-0248.2004.00629.x) for details). Thus, the resulting symbolic vector is 2 values shorter than its original vector. For example, if the original vector was `c(1.2,2.1,3.3,1.1,3.1,2.2)`, then its symbolic vector for values 2-5 would be `c("increasing","peak","trough","peak")`.
 
-2. __Binned__. In this case each datum is placed into 1 of _n_ equally spaced bins. If the number of bins is not specified, then it is calculated according to Rice's Rule whereby `n = ceiling(2*length(x)^(1/3))`.
+2. __Binned__. In this case each datum is placed into 1 of _n_ equally spaced bins. If the number of bins is not specified, then it is calculated according to Rice's Rule whereby for a vector `x`, `n = ceiling(2*length(x)^(1/3))`.
 
 ## I/O
 
 At a minimum `muti` requires two vectors of class `numeric` or `integer`. See `?muti` for all of the other function arguments.
 
-The output of `muti` is a data frame with the MI `MI_xy` and respective significance threshold value `MI_tv` at different lags. Additionally, `muti` produces plots of the original data (top), discretized data (middle), and the MI values (solid line) and associated threshold values (dashed line) at different lags (bottom). The significance thresholds are based on bootstraps of the original data. That process is relatively slow, so please be patient if asking for more than the default `mc=100` samples.
+The output of `muti` is a data frame with the MI `MI_xy` and respective significance threshold value `MI_tv` at different lags. Note that a negative (positive) lag means _X_ leads (trails) _Y_. For example, if comparing vectors `x` and `y` that were both `TT` units long, then the MI at a lag of -1 would be based on `x[1:(TT-1)]` and `y[2:TT]`.
+
+Additionally, `muti` produces 3 plots:
+
+1. The original data (top);
+2. Their symbolic or discretized form (middle);
+3. MI values (solid line) and associated threshold values (dashed line) at different lags (bottom).
+
+The significance thresholds are based on bootstraps of the original data. That process is relatively slow, so please be patient if asking for more than the default `mc=100` samples.
 
 ## Examples
 
@@ -60,7 +68,7 @@ set.seed(123)
 TT <- 30
 x <- rnorm(TT)
 y <- x + rnorm(TT)
-muti(x,y)
+muti(x, y)
 ```
 
 ### Ex 2: Integer values as symbolic
@@ -69,8 +77,8 @@ Here's an example with significant correlation between two integer vectors.
 
 ```{r ex_2, fig.width=6, fig.height=8, warning=FALSE}
 x2 <- rpois(TT,4)
-y2 <- x2 + sample(c(-1,1),TT,replace=TRUE)
-muti(x,y)
+y2 <- x2 + sample(c(-1,1), TT, replace = TRUE)
+muti(x, y)
 ```
 
 ### Ex 3: Real values as symbolic with normalized MI
@@ -78,7 +86,7 @@ muti(x,y)
 Same as Ex 1 with MI normalized to [0,1]. In this case MI'(_X_,_Y_) = MI(_X_,_Y_)/sqrt(_H_(_X_)*_H_(_Y_)).
 
 ```{r ex_3, fig.width=6, fig.height=8, warning=FALSE}
-muti(x,y,normal=TRUE)
+muti(x, y, normal = TRUE)
 ```
 
 ### Ex 4: Real values with binning
@@ -86,15 +94,15 @@ muti(x,y,normal=TRUE)
 Same as Ex 1 with regular binning instead of symbolic.
 
 ```{r ex_4, fig.width=6, fig.height=8, warning=FALSE}
-muti(x,y,sym=FALSE)
+muti(x, y, sym = FALSE)
 ```
 
 ### Ex 5: Autocorrelation
 
-Here's an example of examining the MI of a single time series at multiple time lags.
+Here's an example of examining the normalized MI of a single time series at multiple time lags.
 
 ```{r ex_5, fig.width=6, fig.height=8, warning=FALSE}
 x <- cumsum(rnorm(TT))
-muti(x,x,sym=FALSE)
+muti(x, x, sym = FALSE, normal = TRUE)
 ```
 

@@ -18,4 +18,3 @@ A scalar of the (possibly normalized) mutual information (units = bits).
 \description{
 \code{mutual_info} calculates the mutual information between two vectors.
 }
-

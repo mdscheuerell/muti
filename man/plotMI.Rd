@@ -24,4 +24,3 @@ Plots of original vectors, (potential) symbolic values, and the mutual informati
 \code{plotMI} plots original data plus the mutual information at multiple
 lags.
 }
-

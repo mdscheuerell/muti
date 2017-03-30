@@ -23,4 +23,3 @@ A list with the following components:
 used in creating resampled vectors for the (1 - alpha)% confidence
 interval on the mutual info.
 }
-
