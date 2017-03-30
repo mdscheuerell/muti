@@ -58,15 +58,9 @@ Here's an example with significant correlation between two numeric vectors. Noti
 ``` r
 set.seed(123)
 TT <- 30
-<<<<<<< HEAD
-x <- rnorm(TT)
-y <- x + rnorm(TT)
-muti(x, y)
-=======
 x1 <- rnorm(TT)
 y1 <- x1 + rnorm(TT)
-muti(x1,y1)
->>>>>>> fd93987665ab57405e19ae0b94fca6cd55553d41
+muti(x1, y1)
 ```
 
 ![](README_files/figure-markdown_github/ex_1-1.png)
@@ -88,13 +82,8 @@ Here's an example with significant correlation between two integer vectors.
 
 ``` r
 x2 <- rpois(TT,4)
-<<<<<<< HEAD
 y2 <- x2 + sample(c(-1,1), TT, replace = TRUE)
-muti(x, y)
-=======
-y2 <- x2 + sample(c(-1,1),TT,replace=TRUE)
-muti(x2,y2)
->>>>>>> fd93987665ab57405e19ae0b94fca6cd55553d41
+muti(x2, y2)
 ```
 
 ![](README_files/figure-markdown_github/ex_2-1.png)
@@ -115,11 +104,7 @@ muti(x2,y2)
 Same as Ex 1 with MI normalized to \[0,1\]. In this case MI'(*X*,*Y*) = MI(*X*,*Y*)/sqrt(*H*(*X*)\**H*(*Y*)).
 
 ``` r
-<<<<<<< HEAD
-muti(x, y, normal = TRUE)
-=======
-muti(x1,y1,normal=TRUE)
->>>>>>> fd93987665ab57405e19ae0b94fca6cd55553d41
+muti(x1, y1, normal=TRUE)
 ```
 
 ![](README_files/figure-markdown_github/ex_3-1.png)
@@ -140,11 +125,7 @@ muti(x1,y1,normal=TRUE)
 Same as Ex 1 with regular binning instead of symbolic.
 
 ``` r
-<<<<<<< HEAD
-muti(x, y, sym = FALSE)
-=======
-muti(x1,y1,sym=FALSE)
->>>>>>> fd93987665ab57405e19ae0b94fca6cd55553d41
+muti(x1, y1, sym=FALSE)
 ```
 
 ![](README_files/figure-markdown_github/ex_4-1.png)
@@ -162,32 +143,15 @@ muti(x1,y1,sym=FALSE)
 
 ### Ex 5: Autocorrelation
 
-Here's an example of examining the normalized MI of a single time series at multiple time lags.
+Here's an example of examining the normalized MI of a single time series at various time lags.
 
 ``` r
-<<<<<<< HEAD
-x <- cumsum(rnorm(TT))
-muti(x, x, sym = FALSE, normal = TRUE)
-=======
 x3 <- cumsum(rnorm(TT))
-muti(x3,x3,sym=FALSE)
->>>>>>> fd93987665ab57405e19ae0b94fca6cd55553d41
+muti(x3, x3, sym=FALSE)
 ```
 
 ![](README_files/figure-markdown_github/ex_5-1.png)
 
-<<<<<<< HEAD
-    ##       lag     MI_xy MI_tv
-    ##  [1,]  -4 0.4251935    NA
-    ##  [2,]  -3 0.5418738    NA
-    ##  [3,]  -2 0.5566773    NA
-    ##  [4,]  -1 0.5445797    NA
-    ##  [5,]   0 1.0000000    NA
-    ##  [6,]   1 0.5445797    NA
-    ##  [7,]   2 0.5566773    NA
-    ##  [8,]   3 0.5418738    NA
-    ##  [9,]   4 0.4251935    NA
-=======
     ##       lag    MI_xy     MI_tv
     ##  [1,]  -4 1.373382 0.6785124
     ##  [2,]  -3 1.445323 1.0154965
@@ -198,4 +162,3 @@ muti(x3,x3,sym=FALSE)
     ##  [7,]   2 1.426345 0.8063092
     ##  [8,]   3 1.445323 0.7827691
     ##  [9,]   4 1.373382 0.8463104
->>>>>>> fd93987665ab57405e19ae0b94fca6cd55553d41

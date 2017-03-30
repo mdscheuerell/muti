@@ -4,11 +4,6 @@ export(muti)
 importFrom(graphics,abline)
 importFrom(graphics,axis)
 importFrom(graphics,close.screen)
-<<<<<<< HEAD
-importFrom(graphics,layout)
-importFrom(graphics,lcm)
-=======
->>>>>>> fd93987665ab57405e19ae0b94fca6cd55553d41
 importFrom(graphics,matplot)
 importFrom(graphics,mtext)
 importFrom(graphics,par)
