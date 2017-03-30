@@ -2,25 +2,27 @@
 % Please edit documentation in R/plotMI.R
 \name{plotMI}
 \alias{plotMI}
-\title{Plot original data plus the mutual information at multiple lags.}
+\title{Plot the original and discretized data plus the mutual information.}
 \usage{
-plotMI(x, y, MI, sym, n_bins)
+plotMI(x, y, MI, sym, n_bins, normal)
 }
 \arguments{
-\item{x}{First vector of data}
+\item{x}{First vector of data.}
 
-\item{y}{Second vector of data}
+\item{y}{Second vector of data.}
 
 \item{MI}{A \code{list} with the mutual information as output by \code{muti}.}
 
-\item{sym}{A boolean indcator as to whether symbolic dynamics (TRUE) were used.}
+\item{sym}{A logical indicator as to whether symbolic dynamics were used.}
 
 \item{n_bins}{The number of bins used for computing the MI.}
+
+\item{normal}{A logical indicator as to whether the MI was normalized to [0,1].}
 }
 \value{
-Plots of original vectors, (potential) symbolic values, and the mutual information at multiple lags.
+Plots of original vectors, their discretized values, and the mutual information at multiple lags.
 }
 \description{
-\code{plotMI} plots original data plus the mutual information at multiple
-lags.
+\code{plotMI} plots the original data, the symbolic or discretized data, and
+and the mutual information at multiple lags.
 }

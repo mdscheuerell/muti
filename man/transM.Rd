@@ -2,17 +2,18 @@
 % Please edit documentation in R/transM.R
 \name{transM}
 \alias{transM}
-\title{Estimates the transition matrix for confidence intervals on mutual information.}
+\title{Estimate the transition matrix for computing the critical threshold values on
+mutual information.}
 \usage{
 transM(x, n_bins)
 }
 \arguments{
 \item{x}{A \code{vector} of values.}
 
-\item{n_bins}{The number of bins for the entropy calculation}
+\item{n_bins}{The number of bins for the entropy calculation.}
 }
 \value{
-A list with the following components:
+A \code{list} with the following components:
 \describe{
 \item{\code{xn}}{An [n x 2] matrix of the original and discretized vectors.}
 \item{\code{MM}}{Transition probability matrix from bin-i to bin-j.}
@@ -20,6 +21,6 @@ A list with the following components:
 }
 \description{
 \code{mutual_info} is a helper function for estimating the transition matrix
-used in creating resampled vectors for the (1 - alpha)% confidence
-interval on the mutual info.
+used in creating resampled vectors for the (1 - alpha)\% critical threshold
+value on the mutual info.
 }

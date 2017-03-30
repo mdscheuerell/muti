@@ -1,12 +1,12 @@
-#' Calculates the mutual information between two vectors.
+#' Calculate the mutual information between two vectors.
 #'
 #' \code{mutual_info} calculates the mutual information between two vectors.
 #'
 #' @param su An [n x 2] \code{matrix} or containing two symbolic vectors.
-#' @param normal A boolean indicators as to whether the mutual information
+#' @param normal A logical indicator as to whether the mutual information
 #'   should be normalized to [0,1] (\code{TRUE}) or not (\code{FALSE}).
 #'
-#' @return A scalar of the (possibly normalized) mutual information (units = bits).
+#' @return A scalar of the (possibly normalized) mutual information.
 #'
 mutual_info <- function(su,normal) {
   ## function to calculate mutual information between 2 time series

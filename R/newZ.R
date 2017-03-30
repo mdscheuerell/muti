@@ -1,8 +1,8 @@
-#' Helper function for creating new vector based on resampling the original data.
+#' Create new vector based on resampling of the original data.
 #'
-#' \code{newZ} creates new vector based on transition matrix.
+#' \code{newZ} creates new vector based on a transition matrix.
 #'
-#' @param tM The outputs from \code{transM}; a \code{list} with elements \code{xn} and \code{MM}.
+#' @param tM The output from \code{transM}; a \code{list} with elements \code{xn} and \code{MM}.
 #' @param n_bins The number of bins to use; passed from \code{muti}.
 #'
 #' @return A vector of resampled values.

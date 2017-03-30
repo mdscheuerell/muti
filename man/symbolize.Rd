@@ -2,7 +2,7 @@
 % Please edit documentation in R/symbolize.R
 \name{symbolize}
 \alias{symbolize}
-\title{Convert a numeric vector into a symbolic vector.}
+\title{Convert numeric vectors to symbolic vectors.}
 \usage{
 symbolize(xy)
 }
@@ -14,5 +14,5 @@ An [(n-2) x 2] \code{matrix} of integer symbols that indicate whether the i-th v
 based on the i-1 and i+1 values, is a "trough" (=1), "decrease" (=2), "same" (=3), "increase" (=4), or "peak" (=5).
 }
 \description{
-\code{symbolize} converts a numeric vector into a symbolic vector.
+\code{symbolize} converts numeric vectors to symbolic vectors.
 }

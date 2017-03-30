@@ -2,7 +2,7 @@
 % Please edit documentation in R/muti.R
 \name{muti}
 \alias{muti}
-\title{Calculate mutual information between two vectors and plot results.}
+\title{Calculate the mutual information between two vectors.}
 \usage{
 muti(x, y, n_bins = NULL, sym = TRUE, lags = seq(-4, 4), mc = 100,
   alpha = 0.05, normal = FALSE)
@@ -12,21 +12,23 @@ muti(x, y, n_bins = NULL, sym = TRUE, lags = seq(-4, 4), mc = 100,
 
 \item{y}{Second vector of data. Must be \code{integer} or \code{numeric}.}
 
-\item{n_bins}{[optional] Specify the number of bins to use for calculating
-the entropy. If \code{NULL} (default), the data are discretized based on
-the "Rice Rule" where \code{n_bins = ceiling(2*length(x)^(1/3))}.}
+\item{n_bins}{The number of bins to use for discretizing the data when
+\code{sym = FALSE}. When \code{n_bins = NULL} (default), the data are
+discretized based on the "Rice Rule" where
+\code{n_bins = ceiling(2*length(x)^(1/3))}.}
 
-\item{sym}{Logical indicator of whether to use symbolic dynamics (default).
-If \code{FALSE}, the data are discretized based on \code{n_bins}.}
+\item{sym}{Logical indicator of whether to use symbolic representation of the
+data when calculating the MI. If \code{FALSE}, the data are discretized
+based on \code{n_bins}.}
 
-\item{lags}{Vector of \code{integer} indicating what lags to use. Can be
-positive and/or negative integers.}
+\item{lags}{One or more integers indicating at what lags to calculate the MI.
+Note that a negative (positive) lag means \code{x} leads (trails) \code{y}.}
 
 \item{mc}{The number of Monte Carlo simulations for estimating the critical
 threshold value on the mutual information, above which the MI is
 significant at the specified alpha value. Must be a non-negative integer.}
 
-\item{alpha}{The alpha value for the (1-alpha)% critical threshold
+\item{alpha}{The alpha value for the (1-alpha)\% critical threshold
 on the mutual information.}
 
 \item{normal}{Logical indicator of whether to normalize the mutual
@@ -35,29 +37,19 @@ information based on the entropies. See 'Details."}
 \value{
 A \code{data.frame} with columns for lag (\code{lag}), mutual
   information between x & y (\code{MI_xy}), and the threshold value
-  (\code{MI_tv}) above which the MI is signficant at the specified alpha.
-  Note that the lower bound for MI is 0. Also returns plots of x & y (top),
-  their discrete values (middle), and the mutual information at specified
-  lags (bottom).
+  (\code{MI_tv}) above which the MI is signficant at the specified
+  \code{alpha}. Note that the lower bound for MI is 0. Also returns plots of
+  x & y (top), their discrete values (middle), and the mutual information at
+  specified lags (bottom).
 }
 \description{
 \code{muti} calculates the mutual information between two vectors and plots
 the results at multiple lags.
 }
 \examples{
-set.seed(123)
-
-## number of time steps
 TT <- 30
-## create vector 1
 x <- rnorm(TT)
-
-## CASE 1: no mutual info at any lag
-y <- rnorm(TT)
-muti(x,y)
-
-## CASE 2: mutual info at lag 1
-y <- x + rnorm(TT,0,0.5)
-muti(x,y)
+y <- x + rnorm(TT)
+muti(x, y)
 
 }

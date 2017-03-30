@@ -2,18 +2,18 @@
 % Please edit documentation in R/mutual_info.R
 \name{mutual_info}
 \alias{mutual_info}
-\title{Calculates the mutual information between two vectors.}
+\title{Calculate the mutual information between two vectors.}
 \usage{
 mutual_info(su, normal)
 }
 \arguments{
 \item{su}{An [n x 2] \code{matrix} or containing two symbolic vectors.}
 
-\item{normal}{A boolean indicators as to whether the mutual information
+\item{normal}{A logical indicator as to whether the mutual information
 should be normalized to [0,1] (\code{TRUE}) or not (\code{FALSE}).}
 }
 \value{
-A scalar of the (possibly normalized) mutual information (units = bits).
+A scalar of the (possibly normalized) mutual information.
 }
 \description{
 \code{mutual_info} calculates the mutual information between two vectors.

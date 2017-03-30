@@ -1,13 +1,14 @@
-#' Estimates the transition matrix for confidence intervals on mutual information.
+#' Estimate the transition matrix for computing the critical threshold values on
+#' mutual information.
 #'
 #' \code{mutual_info} is a helper function for estimating the transition matrix
-#' used in creating resampled vectors for the (1 - alpha)% confidence
-#' interval on the mutual info.
+#' used in creating resampled vectors for the (1 - alpha)\% critical threshold
+#' value on the mutual info.
 #'
 #' @param x A \code{vector} of values.
-#' @param n_bins The number of bins for the entropy calculation
+#' @param n_bins The number of bins for the entropy calculation.
 #'
-#' @return A list with the following components:
+#' @return A \code{list} with the following components:
 #' \describe{
 #' \item{\code{xn}}{An [n x 2] matrix of the original and discretized vectors.}
 #' \item{\code{MM}}{Transition probability matrix from bin-i to bin-j.}

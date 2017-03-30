@@ -2,12 +2,12 @@
 % Please edit documentation in R/newZ.R
 \name{newZ}
 \alias{newZ}
-\title{Helper function for creating new vector based on resampling the original data.}
+\title{Create new vector based on resampling of the original data.}
 \usage{
 newZ(tM, n_bins)
 }
 \arguments{
-\item{tM}{The outputs from \code{transM}; a \code{list} with elements \code{xn} and \code{MM}.}
+\item{tM}{The output from \code{transM}; a \code{list} with elements \code{xn} and \code{MM}.}
 
 \item{n_bins}{The number of bins to use; passed from \code{muti}.}
 }
@@ -15,5 +15,5 @@ newZ(tM, n_bins)
 A vector of resampled values.
 }
 \description{
-\code{newZ} creates new vector based on transition matrix.
+\code{newZ} creates new vector based on a transition matrix.
 }

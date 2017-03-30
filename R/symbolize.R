@@ -1,6 +1,6 @@
-#' Convert a numeric vector into a symbolic vector.
+#' Convert numeric vectors to symbolic vectors.
 #'
-#' \code{symbolize} converts a numeric vector into a symbolic vector.
+#' \code{symbolize} converts numeric vectors to symbolic vectors.
 #'
 #' @param xy An [n x 2] \code{matrix} or \code{data.frame} containing the two vectors of interest.
 #'

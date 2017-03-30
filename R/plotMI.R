@@ -1,21 +1,21 @@
-#' Plot original data plus the mutual information at multiple lags.
+#' Plot the original and discretized data plus the mutual information.
 #'
-#' \code{plotMI} plots original data plus the mutual information at multiple
-#' lags.
+#' \code{plotMI} plots the original data, the symbolic or discretized data, and
+#' and the mutual information at multiple lags.
 #'
-#' @param x First vector of data
-#' @param y Second vector of data
+#' @param x First vector of data.
+#' @param y Second vector of data.
 #' @param MI A \code{list} with the mutual information as output by \code{muti}.
-#' @param sym A boolean indcator as to whether symbolic dynamics (TRUE) were used.
+#' @param sym A logical indicator as to whether symbolic dynamics were used.
 #' @param n_bins The number of bins used for computing the MI.
+#' @param normal A logical indicator as to whether the MI was normalized to [0,1].
 #'
-#' @return Plots of original vectors, (potential) symbolic values, and the mutual information at multiple lags.
+#' @return Plots of original vectors, their discretized values, and the mutual information at multiple lags.
 #'
 #' @importFrom graphics abline axis close.screen matplot mtext par plot screen split.screen
 #'
-plotMI <- function(x,y,MI,sym,n_bins) {
-  ## function to plot original & symbolic ts (is desired), plus mutual info
-  ## between 2 ts at varying lags
+plotMI <- function(x, y, MI, sym, n_bins, normal) {
+  ## function to plot original & symbolic ts, plus mutual info at varying lags
   clr <- c("orangered2", "blue2")
   xy <- cbind(x,y)
   ## get length of ts
@@ -74,6 +74,6 @@ plotMI <- function(x,y,MI,sym,n_bins) {
     abline(h=MI[,"MI_tv"], lty="dashed")
   }
   mtext("Lag", side=1, line=2.2)
-  mtext("MI (bits)", side=3, adj=0, line=0.3)
+  mtext(ifelse(normal==FALSE,"MI (bits)","MI"), side=3, adj=0, line=0.3)
   close.screen(all.screens = TRUE)
 } ## end function
