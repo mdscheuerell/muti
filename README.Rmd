@@ -83,7 +83,7 @@ muti(x2, y2)
 
 ### Ex 3: Real values as symbolic with normalized MI
 
-Here are the same data as Ex 1 but with MI normalized to [0,1] (`normal = TRUE`). In this case MI'(_X_,_Y_) = MI(_X_,_Y_)/sqrt(_H_(_X_)*_H_(_Y_)).
+Here are the same data as Ex 1 but with MI normalized to [0,1] (`normal = TRUE`). In this case MI'(_X_,_Y_) = MI(_X_,_Y_)/sqrt(_H_(_X_)*_H_(_Y_)) and the units are dimensionless.
 
 ```{r ex_3, fig.width=6, fig.height=8, warning=FALSE}
 muti(x1, y1, normal = TRUE)
