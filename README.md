@@ -53,7 +53,7 @@ Examples
 
 ### Ex 1: Real values as symbolic
 
-Here's an example with significant correlation between two numeric vectors. Notice that none of the symbolic values are the "same".
+Here's an example with significant information between two numeric vectors. Notice that none of the symbolic values are the "same".
 
 ``` r
 set.seed(123)
@@ -78,7 +78,7 @@ muti(x1, y1)
 
 ### Ex 2: Integer values as symbolic
 
-Here's an example with significant correlation between two integer vectors. Notice that in this case some of the symbolic values are the "same".
+Here's an example with significant information between two integer vectors. Notice that in this case some of the symbolic values are the "same".
 
 ``` r
 x2 <- rpois(TT,4)
@@ -141,7 +141,7 @@ muti(x1, y1, sym = FALSE)
     ## 8   3 0.8754405 1.0241878
     ## 9   4 0.9009431 1.1495736
 
-### Ex 5: Autocorrelation
+### Ex 5: Auto-information
 
 Here's an example of examining the normalized MI of a single time series at various time lags.
 
