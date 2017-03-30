@@ -104,7 +104,7 @@ muti(x2, y2)
 Same as Ex 1 with MI normalized to \[0,1\]. In this case MI'(*X*,*Y*) = MI(*X*,*Y*)/sqrt(*H*(*X*)\**H*(*Y*)).
 
 ``` r
-muti(x1, y1, normal=TRUE)
+muti(x1, y1, normal = TRUE)
 ```
 
 ![](README_files/figure-markdown_github/ex_3-1.png)
@@ -125,7 +125,7 @@ muti(x1, y1, normal=TRUE)
 Same as Ex 1 with regular binning instead of symbolic.
 
 ``` r
-muti(x1, y1, sym=FALSE)
+muti(x1, y1, sym = FALSE)
 ```
 
 ![](README_files/figure-markdown_github/ex_4-1.png)
@@ -147,18 +147,18 @@ Here's an example of examining the normalized MI of a single time series at vari
 
 ``` r
 x3 <- cumsum(rnorm(TT))
-muti(x3, x3, sym=FALSE)
+muti(x3, x3, sym = FALSE, normal = TRUE)
 ```
 
 ![](README_files/figure-markdown_github/ex_5-1.png)
 
-    ##       lag    MI_xy     MI_tv
-    ##  [1,]  -4 1.373382 0.6785124
-    ##  [2,]  -3 1.445323 1.0154965
-    ##  [3,]  -2 1.426345 0.8297028
-    ##  [4,]  -1 1.481657 0.6605550
-    ##  [5,]   0 2.677095 0.5731660
-    ##  [6,]   1 1.481657 0.7478677
-    ##  [7,]   2 1.426345 0.8063092
-    ##  [8,]   3 1.445323 0.7827691
-    ##  [9,]   4 1.373382 0.8463104
+    ##       lag     MI_xy     MI_tv
+    ##  [1,]  -4 0.5266503 0.3390241
+    ##  [2,]  -3 0.5481989 0.4890853
+    ##  [3,]  -2 0.5432998 0.4011222
+    ##  [4,]  -1 0.5568068 0.3533874
+    ##  [5,]   0 1.0000000 0.3128431
+    ##  [6,]   1 0.5568068 0.3255915
+    ##  [7,]   2 0.5432998 0.3886253
+    ##  [8,]   3 0.5481989 0.3524389
+    ##  [9,]   4 0.5266503 0.3736470
