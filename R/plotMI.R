@@ -11,9 +11,12 @@
 #'
 #' @return Plots of original vectors, (potential) symbolic values, and the mutual information at multiple lags.
 #'
+<<<<<<< HEAD
 #' @importFrom graphics abline axis close.screen layout lcm matplot mtext par plot screen split.screen
+=======
+#' @importFrom graphics abline axis close.screen matplot mtext par plot screen split.screen
+>>>>>>> fd93987665ab57405e19ae0b94fca6cd55553d41
 #'
-#' @export
 plotMI <- function(x,y,MI,sym,n_bins) {
   ## function to plot original & symbolic ts (is desired), plus mutual info
   ## between 2 ts at varying lags

@@ -8,7 +8,6 @@
 #'
 #' @return A scalar of the (possibly normalized) mutual information (units = bits).
 #'
-#' @export
 mutual_info <- function(su,normal) {
   ## function to calculate mutual information between 2 time series
   ## need to remove obs with NA's b/c they don't contribute to info

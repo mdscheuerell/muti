@@ -3,20 +3,21 @@
 #' \code{muti} calculates the mutual information between two vectors and plots
 #' the results at multiple lags.
 #'
-#' @param x First vector of data
-#' @param y Second vector of data
+#' @param x First vector of data. Must be \code{integer} or \code{numeric}.
+#' @param y Second vector of data. Must be \code{integer} or \code{numeric}.
 #' @param n_bins [optional] Specify the number of bins to use for calculating
 #'   the entropy. If \code{NULL} (default), the data are discretized based on
 #'   the "Rice Rule" where \code{n_bins = ceiling(2*length(x)^(1/3))}.
-#' @param sym Boolean indicator of whether to use symbolic dynamics (default).
+#' @param sym Logical indicator of whether to use symbolic dynamics (default).
 #'   If \code{FALSE}, the data are discretized based on \code{n_bins}.
 #' @param lags Vector of \code{integer} indicating what lags to use. Can be
-#'   positive and/or negative.
-#' @param mc The number of Monte Carlo simulations for estimating the
-#'   confidence interval on the mutual information.
-#' @param alpha The alpha value for the upper (1-alpha)% confidence bound
-#'   on the mutual information (lower bound is 0).
-#' @param normal Boolean indicator of whether to normalize the mutual
+#'   positive and/or negative integers.
+#' @param mc The number of Monte Carlo simulations for estimating the critical
+#'   threshold value on the mutual information, above which the MI is
+#'   significant at the specified alpha value. Must be a non-negative integer.
+#' @param alpha The alpha value for the (1-alpha)% critical threshold
+#'   on the mutual information.
+#' @param normal Logical indicator of whether to normalize the mutual
 #'   information based on the entropies. See 'Details."
 #'
 #' @return A \code{data.frame} with columns for lag (\code{lag}), mutual
@@ -71,10 +72,10 @@ muti <- function(x,y,n_bins=NULL,sym=TRUE,lags=seq(-4,4),mc=100,alpha=0.05,norma
     stop("'lags' must be a single integer or a series of integers.\n\n")
   }
   if(any(abs(lags)>=length(x))) {
-    stop("The min/max of 'lags' must be less than the length 'x' and 'y'.\n\n")
+    stop("The min/max of 'lags' must be less than the length of 'x' and 'y'.\n\n")
   }
-  if(mc<1 | (n_bins-round(n_bins))!=0) {
-    stop("'mc' must be an integer > 0.\n\n")
+  if(mc<0 | (mc-round(mc))!=0) {
+    stop("'mc' must be a non-negative integer.\n\n")
   }
   if(alpha<=0 | alpha>=1) {
     stop("'alpha' must be between 0 and 1.")
@@ -117,7 +118,7 @@ muti <- function(x,y,n_bins=NULL,sym=TRUE,lags=seq(-4,4),mc=100,alpha=0.05,norma
     if(sym) { MI[cnt,"MI_xy"] <- mutual_info(symbolize(cbind(xx,yy)),normal) }
     else { MI[cnt,"MI_xy"] <- mutual_info(cbind(xx,yy),normal) }
     ## compute (1-alpha)% CI, if desired
-    if(!is.null(mc)) {
+    if(mc>0) {
       ## get trans probs for x & y
       xm <- transM(xx,n_bins)
       ym <- transM(yy,n_bins)
@@ -130,6 +131,8 @@ muti <- function(x,y,n_bins=NULL,sym=TRUE,lags=seq(-4,4),mc=100,alpha=0.05,norma
         else { mcr[j] <- mutual_info(xy,normal) }
       }
       MI[cnt,"MI_tv"] <- sort(mcr)[round((1-alpha)*mc)]
+    } else {
+      MI[cnt,"MI_tv"] <- NA
     }
     ## increment counter
     cnt <- cnt + 1

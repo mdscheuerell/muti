@@ -8,27 +8,28 @@ muti(x, y, n_bins = NULL, sym = TRUE, lags = seq(-4, 4), mc = 100,
   alpha = 0.05, normal = FALSE)
 }
 \arguments{
-\item{x}{First vector of data}
+\item{x}{First vector of data. Must be \code{integer} or \code{numeric}.}
 
-\item{y}{Second vector of data}
+\item{y}{Second vector of data. Must be \code{integer} or \code{numeric}.}
 
 \item{n_bins}{[optional] Specify the number of bins to use for calculating
 the entropy. If \code{NULL} (default), the data are discretized based on
 the "Rice Rule" where \code{n_bins = ceiling(2*length(x)^(1/3))}.}
 
-\item{sym}{Boolean indicator of whether to use symbolic dynamics (default).
+\item{sym}{Logical indicator of whether to use symbolic dynamics (default).
 If \code{FALSE}, the data are discretized based on \code{n_bins}.}
 
 \item{lags}{Vector of \code{integer} indicating what lags to use. Can be
-positive and/or negative.}
+positive and/or negative integers.}
 
-\item{mc}{The number of Monte Carlo simulations for estimating the
-confidence interval on the mutual information.}
+\item{mc}{The number of Monte Carlo simulations for estimating the critical
+threshold value on the mutual information, above which the MI is
+significant at the specified alpha value. Must be a non-negative integer.}
 
-\item{alpha}{The alpha value for the upper (1-alpha)% confidence bound
-on the mutual information (lower bound is 0).}
+\item{alpha}{The alpha value for the (1-alpha)% critical threshold
+on the mutual information.}
 
-\item{normal}{Boolean indicator of whether to normalize the mutual
+\item{normal}{Logical indicator of whether to normalize the mutual
 information based on the entropies. See 'Details."}
 }
 \value{
