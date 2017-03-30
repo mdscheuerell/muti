@@ -138,5 +138,5 @@ muti <- function(x,y,n_bins=NULL,sym=TRUE,lags=seq(-4,4),mc=100,alpha=0.05,norma
     cnt <- cnt + 1
   } ## end loop over lags
   plotMI(px,py,MI,sym,n_bins)
-  return(MI)
+  return(as.data.frame(MI))
 } ## end function
