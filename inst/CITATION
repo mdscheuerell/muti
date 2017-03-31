@@ -1,0 +1,12 @@
+citHeader("To cite muti in publications use:")
+
+citEntry(entry = "Manual",
+         title = "muti: An R package for computing mutual information",
+         year = "2017",
+         doi = "doi.org/10.5281/zenodo.439391",
+         url = "https://github.com/mdscheuerell/muti",
+         author = "M. D. Scheuerell",
+         textVersion = paste("Scheuerell, M. D. (2017)",
+                             "muti: An R package for computing mutual information.",
+                             "https://doi.org/10.5281/zenodo.439391")
+         )

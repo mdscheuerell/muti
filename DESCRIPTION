@@ -1,6 +1,7 @@
 Package: muti
-Title: Calculates the Mutual Information Between Two Vectors
 Version: 1.0.0
+Date: 2017-03-30
+Title: Calculates the Mutual Information Between Two Vectors
 Authors@R: as.person(c("Mark Scheuerell <mark.scheuerell@noaa.gov> [aut, cre]"))
 Description: muti calculates the mutual information between two vectors.
 Depends: R (>= 3.3)
