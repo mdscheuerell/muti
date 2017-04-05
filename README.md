@@ -36,7 +36,7 @@ Data discretization
 
 `muti` computes MI based on 1 of 2 possible discretizations of the data in a vector `x`:
 
-1.  **Symbolic**. (Default) For `1 < i < length(x)`, `x[i]` is converted to 1 of 5 symbolic representations based on `x[i-1]` and `x[i+1]`: "peak", "decreasing", "same", "trough", or "increasing". For example, if the original vector was `c(1.1,2.1,3.3,1.2,3.1)`, then its symbolic translation would be `c("increasing","peak","trough")`. For details, see [Cazelles (2004)](https://doi.org/10.1111/j.1461-0248.2004.00629.x).
+1.  **Symbolic**. (Default) For `1 < i < length(x)`, `x[i]` is translated into 1 of 5 symbolic representations based on its value relative to `x[i-1]` and `x[i+1]`: "peak", "decreasing", "same", "trough", or "increasing". For example, if the original vector was `c(1.1,2.1,3.3,1.2,3.1)`, then its symbolic translation would be `c("increasing","peak","trough")`. For additional details, see [Cazelles (2004)](https://doi.org/10.1111/j.1461-0248.2004.00629.x).
 
 2.  **Binned**. Each datum is placed into 1 of *n* equally spaced bins as in a histogram. If the number of bins is not specified, then it is calculated according to Rice's Rule where `n = ceiling(2*length(x)^(1/3))`.
 
@@ -45,9 +45,9 @@ I/O
 
 **Input**. At a minimum `muti` requires two vectors of class `numeric` or `integer`. See `?muti` for all of the other function arguments.
 
-**Output**. The output of `muti` is a data frame with the MI `MI_xy` and respective significance threshold value `MI_tv` at different lags. Note that a negative (positive) lag means *X* leads (trails) *Y*. For example, if comparing vectors `x` and `y` that were both `TT` units long, then the MI at a lag of -1 would be based on `x[1:(TT-1)]` and `y[2:TT]`.
+**Output**. The output of `muti` is a data frame with the MI `MI_xy` and respective significance threshold value `MI_tv` at different lags. Note that a negative (positive) lag means *X* leads (trails) *Y*. For example, if `length(x) == length(y) == TT`, then the MI in `x` and `y` at a lag of -1 would be based on `x[1:(TT-1)]` and `y[2:TT]`.
 
-Additionally, `muti` produces 3 plots of
+Additionally, `muti` produces a 3-panel plot of
 
 1.  the original data (top);
 2.  their symbolic or discretized form (middle);
@@ -72,16 +72,16 @@ muti(x1, y1)
 
 ![](README_files/figure-markdown_github/ex_1-1.png)
 
-    ##   lag     MI_xy     MI_tv
-    ## 1  -4 0.3122401 0.6396689
-    ## 2  -3 0.5477111 0.5896470
-    ## 3  -2 0.4896244 0.5868193
-    ## 4  -1 0.6133082 0.5400706
-    ## 5   0 0.7759290 0.6117563
-    ## 6   1 0.4590565 0.6097824
-    ## 7   2 0.1663024 0.5748355
-    ## 8   3 0.2815102 0.5654351
-    ## 9   4 0.4795740 0.6188139
+    ##   lag MI_xy MI_tv
+    ## 1  -4 0.312 0.640
+    ## 2  -3 0.548 0.590
+    ## 3  -2 0.490 0.587
+    ## 4  -1 0.613 0.540
+    ## 5   0 0.776 0.612
+    ## 6   1 0.459 0.610
+    ## 7   2 0.166 0.575
+    ## 8   3 0.282 0.565
+    ## 9   4 0.480 0.619
 
 ### Ex 2: Integer values as symbolic
 
@@ -95,16 +95,16 @@ muti(x2, y2)
 
 ![](README_files/figure-markdown_github/ex_2-1.png)
 
-    ##   lag     MI_xy     MI_tv
-    ## 1  -4 0.9622210 0.8510187
-    ## 2  -3 0.5323156 0.7538786
-    ## 3  -2 0.4511814 0.7758370
-    ## 4  -1 0.7775874 0.7009295
-    ## 5   0 0.9852553 0.6586393
-    ## 6   1 0.9450356 0.7456378
-    ## 7   2 0.5661902 0.8078943
-    ## 8   3 0.6119224 0.8451717
-    ## 9   4 0.7026058 0.8197471
+    ##   lag MI_xy MI_tv
+    ## 1  -4 0.962 0.851
+    ## 2  -3 0.532 0.754
+    ## 3  -2 0.451 0.776
+    ## 4  -1 0.778 0.701
+    ## 5   0 0.985 0.659
+    ## 6   1 0.945 0.746
+    ## 7   2 0.566 0.808
+    ## 8   3 0.612 0.845
+    ## 9   4 0.703 0.820
 
 ### Ex 3: Real values as symbolic with normalized MI
 
@@ -116,16 +116,16 @@ muti(x1, y1, normal = TRUE)
 
 ![](README_files/figure-markdown_github/ex_3-1.png)
 
-    ##   lag      MI_xy     MI_tv
-    ## 1  -4 0.16712589 0.3677492
-    ## 2  -3 0.28904789 0.3135484
-    ## 3  -2 0.26046030 0.3267956
-    ## 4  -1 0.32544694 0.3009047
-    ## 5   0 0.41446439 0.2896681
-    ## 6   1 0.24575105 0.3207486
-    ## 7   2 0.08846611 0.3305198
-    ## 8   3 0.14856359 0.3199256
-    ## 9   4 0.25457125 0.3376727
+    ##   lag MI_xy MI_tv
+    ## 1  -4 0.167 0.368
+    ## 2  -3 0.289 0.314
+    ## 3  -2 0.260 0.327
+    ## 4  -1 0.325 0.301
+    ## 5   0 0.414 0.290
+    ## 6   1 0.246 0.321
+    ## 7   2 0.088 0.331
+    ## 8   3 0.149 0.320
+    ## 9   4 0.255 0.338
 
 ### Ex 4: Real values with binning
 
@@ -137,35 +137,13 @@ muti(x1, y1, sym = FALSE)
 
 ![](README_files/figure-markdown_github/ex_4-1.png)
 
-    ##   lag     MI_xy     MI_tv
-    ## 1  -4 0.8820883 1.0915053
-    ## 2  -3 0.8889416 1.0400937
-    ## 3  -2 1.1275134 1.0351082
-    ## 4  -1 0.8990155 1.0109159
-    ## 5   0 1.0098951 1.0146187
-    ## 6   1 0.7625273 0.9982514
-    ## 7   2 1.0095443 0.9650760
-    ## 8   3 0.8754405 1.0241878
-    ## 9   4 0.9009431 1.1495736
-
-### Ex 5: Auto-information
-
-Here's an example of examining the normalized MI of a single time series at various time lags.
-
-``` r
-x3 <- cumsum(rnorm(TT))
-muti(x3, x3, sym = FALSE, normal = TRUE)
-```
-
-![](README_files/figure-markdown_github/ex_5-1.png)
-
-    ##   lag     MI_xy     MI_tv
-    ## 1  -4 0.5266503 0.3390241
-    ## 2  -3 0.5481989 0.4890853
-    ## 3  -2 0.5432998 0.4011222
-    ## 4  -1 0.5568068 0.3533874
-    ## 5   0 1.0000000 0.3128431
-    ## 6   1 0.5568068 0.3255915
-    ## 7   2 0.5432998 0.3886253
-    ## 8   3 0.5481989 0.3524389
-    ## 9   4 0.5266503 0.3736470
+    ##   lag MI_xy MI_tv
+    ## 1  -4 0.882 1.092
+    ## 2  -3 0.889 1.040
+    ## 3  -2 1.128 1.035
+    ## 4  -1 0.899 1.011
+    ## 5   0 1.010 1.015
+    ## 6   1 0.763 0.998
+    ## 7   2 1.010 0.965
+    ## 8   3 0.875 1.024
+    ## 9   4 0.901 1.150
