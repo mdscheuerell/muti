@@ -36,9 +36,9 @@ Data discretization
 
 `muti` computes MI based on 1 of 2 possible discretizations of the data in a vector `x`:
 
-1.  **Symbolic**. (Default) For `1 < i < length(x)`, `x[i]` is translated into 1 of 5 symbolic representations based on its value relative to `x[i-1]` and `x[i+1]`: "peak", "decreasing", "same", "trough", or "increasing". For example, if the original vector was `c(1.1,2.1,3.3,1.2,3.1)`, then its symbolic translation would be `c("increasing","peak","trough")`. For additional details, see [Cazelles (2004)](https://doi.org/10.1111/j.1461-0248.2004.00629.x).
+1.  **Symbolic**. (Default) For `1 < i < length(x)`, `x[i]` is translated into 1 of 5 symbolic representations based on its value relative to `x[i-1]` and `x[i+1]`: "peak", "decreasing", "same", "trough", or "increasing". For example, the symbolic translation of the vector `c(1.1,2.1,3.3,1.2,3.1)` would be `c("increasing","peak","trough")`. For additional details, see [Cazelles (2004)](https://doi.org/10.1111/j.1461-0248.2004.00629.x).
 
-2.  **Binned**. Each datum is placed into 1 of *n* equally spaced bins as in a histogram. If the number of bins is not specified, then it is calculated according to Rice's Rule where `n = ceiling(2*length(x)^(1/3))`.
+2.  **Binned**. Each datum is placed into 1 of `n` equally spaced bins as in a histogram. If the number of bins is not specified, then it is calculated according to Rice's Rule where `n = ceiling(2*length(x)^(1/3))`.
 
 I/O
 ---
@@ -53,7 +53,7 @@ Additionally, `muti` produces a 3-panel plot of
 2.  their symbolic or discretized form (middle);
 3.  MI values (solid line) and their associated threshold values (dashed line) at different lags (bottom).
 
-The significance thresholds are based on bootstraps of the original data. That process is relatively slow, so please be patient if asking for more than the default `mc=100` samples.
+The significance thresholds are based on a bootstrap of the original data. That process is relatively slow, so please be patient if asking for more than the default `mc=100` samples.
 
 Examples
 --------
