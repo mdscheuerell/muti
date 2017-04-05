@@ -2,7 +2,7 @@
 % Please edit documentation in R/plotMI.R
 \name{plotMI}
 \alias{plotMI}
-\title{Plot the original and discretized data plus the mutual information.}
+\title{Plot the data and mutual information.}
 \usage{
 plotMI(x, y, MI, sym, n_bins, normal)
 }
@@ -20,9 +20,11 @@ plotMI(x, y, MI, sym, n_bins, normal)
 \item{normal}{A logical indicator as to whether the MI was normalized to [0,1].}
 }
 \value{
-Plots of original vectors, their discretized values, and the mutual information at multiple lags.
+A 3-panel plot of original vectors (top), their discretized values
+  (middle), and the mutual information at multiple lags (bottom).
 }
 \description{
 \code{plotMI} plots the original data, the symbolic or discretized data, and
-and the mutual information at multiple lags.
+  the mutual information at multiple lags. It is a helper function for
+  \code{muti}.
 }

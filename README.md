@@ -21,7 +21,7 @@ You can install the development version using `devtools`.
 Background
 ----------
 
-MI estimates the amount of information about one variable contained in another; it can be thought of as a nonparametric measure of the covariance between the two variables. MI is a function of entropy, which is the expected amount of information contained in a variable. If *P*(*X*) is the probability mass function of *X*, then the entropy of *X* is
+MI estimates the amount of information about one variable contained in another; it can be thought of as a nonparametric measure of the covariance between the two variables. MI is a function of entropy, which is the expected amount of information contained in a variable. The entropy of *X*, *H*(*X*), given its probability mass function, *P*(*X*), is
 
 *H*(*X*) = E\[-ln(P(X))\].
 
@@ -34,11 +34,11 @@ where *H*(*X*,*Y*) is the joint entropy between *X* and *Y*. `muti` uses base-2 
 Data discretization
 -------------------
 
-`muti` computes MI based on 1 of 2 possible discretizations of the data:
+`muti` computes MI based on 1 of 2 possible discretizations of the data in a vector `x`:
 
-1.  **Symbolic**. In this case the *i*-th datum is converted to 1 of 5 symbolic representations (*i.e.*, "peak", "decreasing", "same", "trough", "increasing") based on its value relative to the *i*-1 and *i*+1 values (see [Cazelles 2004](https://doi.org/10.1111/j.1461-0248.2004.00629.x) for details). Thus, the first and last values are undefined and the resulting symbolic vector is 2 values shorter than its original vector. For example, if the original vector was `c(1.1,2.1,3.3,1.2,3.1)`, then its symbolic vector would be `c("increasing","peak","trough")`.
+1.  **Symbolic**. (Default) For `1 < i < length(x)`, `x[i]` is converted to 1 of 5 symbolic representations based on `x[i-1]` and `x[i+1]`: "peak", "decreasing", "same", "trough", or "increasing". For example, if the original vector was `c(1.1,2.1,3.3,1.2,3.1)`, then its symbolic translation would be `c("increasing","peak","trough")`. For details, see [Cazelles (2004)](https://doi.org/10.1111/j.1461-0248.2004.00629.x).
 
-2.  **Binned**. In this case each datum is placed into 1 of *n* equally spaced bins. If the number of bins is not specified, then it is calculated according to Rice's Rule whereby for vectors `x` and `y` of length `L`, `n = ceiling(2*L^(1/3))`.
+2.  **Binned**. Each datum is placed into 1 of *n* equally spaced bins as in a histogram. If the number of bins is not specified, then it is calculated according to Rice's Rule where `n = ceiling(2*length(x)^(1/3))`.
 
 I/O
 ---

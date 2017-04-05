@@ -1,7 +1,8 @@
-#' Plot the original and discretized data plus the mutual information.
+#' Plot the data and mutual information.
 #'
 #' \code{plotMI} plots the original data, the symbolic or discretized data, and
-#' and the mutual information at multiple lags.
+#'   the mutual information at multiple lags. It is a helper function for
+#'   \code{muti}.
 #'
 #' @param x First vector of data.
 #' @param y Second vector of data.
@@ -10,7 +11,8 @@
 #' @param n_bins The number of bins used for computing the MI.
 #' @param normal A logical indicator as to whether the MI was normalized to [0,1].
 #'
-#' @return Plots of original vectors, their discretized values, and the mutual information at multiple lags.
+#' @return A 3-panel plot of original vectors (top), their discretized values
+#'   (middle), and the mutual information at multiple lags (bottom).
 #'
 #' @importFrom graphics abline axis close.screen matplot mtext par plot screen split.screen
 #'

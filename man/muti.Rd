@@ -4,47 +4,47 @@
 \alias{muti}
 \title{Calculate the mutual information between two vectors.}
 \usage{
-muti(x, y, n_bins = NULL, sym = TRUE, lags = seq(-4, 4), mc = 100,
-  alpha = 0.05, normal = FALSE)
+muti(x, y, sym = TRUE, n_bins = NULL, normal = FALSE, lags = seq(-4, 4),
+  mc = 100, alpha = 0.05)
 }
 \arguments{
 \item{x}{First vector of data. Must be \code{integer} or \code{numeric}.}
 
 \item{y}{Second vector of data. Must be \code{integer} or \code{numeric}.}
 
-\item{n_bins}{The number of bins to use for discretizing the data when
-\code{sym = FALSE}. When \code{n_bins = NULL} (default), the data are
-discretized based on the "Rice Rule" where
-\code{n_bins = ceiling(2*length(x)^(1/3))}.}
-
 \item{sym}{Logical indicator of whether to use symbolic representation of the
 data when calculating the MI. If \code{FALSE}, the data are discretized
 based on \code{n_bins}.}
+
+\item{n_bins}{The number of bins to use for discretizing the data when
+\code{sym = FALSE}. When \code{n_bins = NULL} (default), the data are
+discretized based on the Rice rule where
+\code{n_bins = ceiling(2*length(x)^(1/3))}.}
+
+\item{normal}{Logical indicator of whether to normalize the mutual
+information to [0,1].}
 
 \item{lags}{One or more integers indicating at what lags to calculate the MI.
 Note that a negative (positive) lag means \code{x} leads (trails) \code{y}.}
 
 \item{mc}{The number of Monte Carlo simulations for estimating the critical
 threshold value on the mutual information, above which the MI is
-significant at the specified alpha value. Must be a non-negative integer.}
+significant at the specified `alpha`. Must be a non-negative integer.}
 
-\item{alpha}{The alpha value for the (1-alpha)\% critical threshold
-on the mutual information.}
-
-\item{normal}{Logical indicator of whether to normalize the mutual
-information based on the entropies. See 'Details."}
+\item{alpha}{The alpha value for estimating the upper (1-alpha)\% critical
+threshold on the mutual information.}
 }
 \value{
 A \code{data.frame} with columns for lag (\code{lag}), mutual
   information between x & y (\code{MI_xy}), and the threshold value
   (\code{MI_tv}) above which the MI is signficant at the specified
   \code{alpha}. Note that the lower bound for MI is 0. Also returns plots of
-  x & y (top), their discrete values (middle), and the mutual information at
-  specified lags (bottom).
+  x & y (top panel), their discrete values (middle panel), and the mutual
+  information at specified lags (bottom panel).
 }
 \description{
-\code{muti} calculates the mutual information between two vectors and plots
-the results at multiple lags.
+\code{muti} calculates the mutual information between two vectors at multiple
+lags and plots the results.
 }
 \examples{
 TT <- 30
