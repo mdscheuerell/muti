@@ -134,6 +134,6 @@ muti(x1, y1, sym = FALSE)
 
 Please cite the `muti` package as:
 
-Scheuerell, M. D. (2017) muti: An R package for computing mutual information. https://doi.org/10.5281/zenodo.439391
+> Scheuerell, M. D. (2017) muti: An R package for computing mutual information. https://doi.org/10.5281/zenodo.439391
 
 See `citation("muti")` for a BibTeX entry.
