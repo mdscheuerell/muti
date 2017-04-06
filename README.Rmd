@@ -31,7 +31,7 @@ devtools::install_github("mdscheuerell/muti")
 
 ## Background
 
-MI estimates the amount of information about one variable contained in another; it can be thought of as a nonparametric measure of the covariance between the two variables. MI is a function of entropy, which is the expected amount of information contained in a variable. If _P_(_X_) is the probability mass function of _X_, then the entropy of _X_ is
+MI estimates the amount of information about one variable contained in another; it can be thought of as a nonparametric measure of the covariance between the two variables. MI is a function of entropy, which is the expected amount of information contained in a variable. The entropy of _X_, _H_(_X_), given its probability mass function, _P_(_X_), is
 
 _H_(_X_) = E[-ln(P(X))].
 
@@ -43,25 +43,25 @@ where _H_(_X_,_Y_) is the joint entropy between _X_ and _Y_. `muti` uses base-2 
 
 ## Data discretization
 
-`muti` computes MI based on 1 of 2 possible discretizations of the data:
+`muti` computes MI based on 1 of 2 possible discretizations of the data in a vector `x`:
 
-1. __Symbolic__. In this case the _i_-th datum is converted to 1 of 5 symbolic representations (_i.e._, "peak", "decreasing", "same", "trough", "increasing") based on its value relative to the _i_-1 and _i_+1 values (see [Cazelles 2004](https://doi.org/10.1111/j.1461-0248.2004.00629.x) for details). Thus, the first and last values are undefined and the resulting symbolic vector is 2 values shorter than its original vector. For example, if the original vector was `c(1.1,2.1,3.3,1.2,3.1)`, then its symbolic vector would be `c("increasing","peak","trough")`.
+1. __Symbolic__. (Default) For `1 < i < length(x)`, `x[i]` is translated into 1 of 5 symbolic representations based on its value relative to `x[i-1]` and `x[i+1]`: "peak", "decreasing", "same", "trough", or "increasing". For example, the symbolic translation of the vector `c(1.1,2.1,3.3,1.2,3.1)` would be `c("increasing","peak","trough")`. For additional details, see [Cazelles (2004)](https://doi.org/10.1111/j.1461-0248.2004.00629.x).
 
-2. __Binned__. In this case each datum is placed into 1 of _n_ equally spaced bins. If the number of bins is not specified, then it is calculated according to Rice's Rule whereby for vectors `x` and `y` of length `L`, `n = ceiling(2*L^(1/3))`.
+2. __Binned__. Each datum is placed into 1 of `n` equally spaced bins as in a histogram. If the number of bins is not specified, then it is calculated according to Rice's Rule where `n = ceiling(2*length(x)^(1/3))`.
 
 ## I/O
 
 __Input__. At a minimum `muti` requires two vectors of class `numeric` or `integer`. See `?muti` for all of the other function arguments.
 
-__Output__. The output of `muti` is a data frame with the MI `MI_xy` and respective significance threshold value `MI_tv` at different lags. Note that a negative (positive) lag means _X_ leads (trails) _Y_. For example, if comparing vectors `x` and `y` that were both `TT` units long, then the MI at a lag of -1 would be based on `x[1:(TT-1)]` and `y[2:TT]`.
+__Output__. The output of `muti` is a data frame with the MI `MI_xy` and respective significance threshold value `MI_tv` at different lags. Note that a negative (positive) lag means _X_ leads (trails) _Y_. For example, if `length(x) == length(y) == TT`, then the MI in `x` and `y` at a lag of -1 would be based on `x[1:(TT-1)]` and `y[2:TT]`.
 
-Additionally, `muti` produces 3 plots of
+Additionally, `muti` produces a 3-panel plot of
 
 1. the original data (top);
 2. their symbolic or discretized form (middle);
 3. MI values (solid line) and their associated threshold values (dashed line) at different lags (bottom).
 
-The significance thresholds are based on bootstraps of the original data. That process is relatively slow, so please be patient if asking for more than the default `mc=100` samples.
+The significance thresholds are based on a bootstrap of the original data. That process is relatively slow, so please be patient if asking for more than the default `mc=100` samples.
 
 ## Examples
 
@@ -101,14 +101,5 @@ Here are the same data as Ex 1 but with regular binning instead of symbolic (`sy
 
 ```{r ex_4, fig.width=6, fig.height=8, warning=FALSE}
 muti(x1, y1, sym = FALSE)
-```
-
-### Ex 5: Auto-information
-
-Here's an example of examining the normalized MI of a single time series at various time lags.
-
-```{r ex_5, fig.width=6, fig.height=8, warning=FALSE}
-x3 <- cumsum(rnorm(TT))
-muti(x3, x3, sym = FALSE, normal = TRUE)
 ```
 

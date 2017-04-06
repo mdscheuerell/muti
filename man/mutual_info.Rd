@@ -7,15 +7,17 @@
 mutual_info(su, normal)
 }
 \arguments{
-\item{su}{An [n x 2] \code{matrix} or containing two symbolic vectors.}
+\item{su}{An n x 2 \code{matrix} containing two discrete vectors.}
 
 \item{normal}{A logical indicator as to whether the mutual information
-should be normalized to [0,1] (\code{TRUE}) or not (\code{FALSE}).}
+should be normalized to [0,1].}
 }
 \value{
-A scalar of the (possibly normalized) mutual information.
+A scalar of class `numeric` of the (possibly normalized) mutual
+  information.
 }
 \description{
-\code{mutual_info} calculates the mutual information between two vectors.
+\code{mutual_info} calculates the mutual information between two vectors. It
+  is a helper function for \code{muti}.
 }
 
