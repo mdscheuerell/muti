@@ -26,3 +26,4 @@ Plots of original vectors, their discretized values, and the mutual information 
 \code{plotMI} plots the original data, the symbolic or discretized data, and
 and the mutual information at multiple lags.
 }
+
