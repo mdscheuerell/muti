@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>`muti` - An R package for computing mutual information • muti</title>
+<title>Introduction to muti • muti</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="`muti` - An R package for computing mutual information">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to muti">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -54,7 +54,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/introduction.html">`muti` - An R package for computing mutual information</a>
+      <a href="../articles/introduction.html">Introduction to muti</a>
     </li>
   </ul>
 </li>
@@ -79,8 +79,7 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>
-<code>muti</code> - An R package for computing mutual information</h1>
+      <h1>Introduction to muti</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/mdscheuerell/muti/blob/master/vignettes/introduction.Rmd"><code>vignettes/introduction.Rmd</code></a></small>
@@ -90,27 +89,23 @@
 
     
     
-<p><a href="https://zenodo.org/badge/latestdoi/85351399"><img src="https://zenodo.org/badge/85351399.svg" alt="DOI"></a></p>
-<hr>
-<p><a href="https://faculty.washington.edu/scheuerl/"><strong>Mark D. Scheuerell</strong></a><br><em>Fish Ecology Division, Northwest Fisheries Science Center, National Marine Fisheries Service, National Oceanic and Atmospheric Administration, Seattle, WA USA, <a href="mailto:mark.scheuerell@noaa.gov" class="email">mark.scheuerell@noaa.gov</a></em></p>
-<hr>
 <div id="background" class="section level1">
 <h1 class="hasAnchor">
 <a href="#background" class="anchor"></a>Background</h1>
-<p><code>muti</code> is an <code>R</code> package that computes the mutual information <span class="math inline">\((\mathrm{MI})\)</span> between two discrete random variables. <code>muti</code> was developed with time series analysis in mind, but there is nothing tying the methods to a time index <em>per se</em>.</p>
-<p>Mutual Information estimates the amount of information about one variable contained in another; it can be thought of as a nonparametric measure of the covariance between the two variables. <span class="math inline">\(\mathrm{MI}\)</span> is a function of entropy, which is the expected amount of information contained in a variable. The entropy of <span class="math inline">\(X\)</span>, <span class="math inline">\(\mathrm{H}(X)\)</span>, given its probability mass function, <span class="math inline">\(p(X)\)</span>, is</p>
+<p><strong>muti</strong> computes the mutual information <span class="math inline">\((\mathrm{MI})\)</span> contained in two vectors of discrete random variables. <strong>muti</strong> was developed with time series analysis in mind, but there is nothing tying the methods to a time index <em>per se</em>.</p>
+<p>Mutual information <span class="math inline">\((\mathrm{MI})\)</span> estimates the amount of information about one variable contained in another; it can be thought of as a nonparametric measure of the covariance between the two variables. <span class="math inline">\(\mathrm{MI}\)</span> is a function of entropy, which is the expected amount of information contained in a variable. The entropy of <span class="math inline">\(X\)</span>, <span class="math inline">\(\mathrm{H}(X)\)</span>, given its probability mass function, <span class="math inline">\(p(X)\)</span>, is</p>
 <p><span class="math display">\[
 \begin{align}
 \mathrm{H}(X) &amp;= \mathrm{E}[-\log(p(X))]\\
  &amp;= -\sum_{i=1}^{L} p(x_i) \log_bp(x_i),
 \end{align}
 \]</span></p>
-<p>where <span class="math inline">\(L\)</span> is the length of the time series and <span class="math inline">\(b\)</span> is the base of the logarithm. <code>muti</code> uses base-2 logarithms for calculating the entropies, so <span class="math inline">\(\mathrm{MI}\)</span> measures information content in units of “bits”. In cases where <span class="math inline">\(p(x_i) = 0\)</span>, then <span class="math inline">\(\mathrm{H}(X) = 0\)</span>.</p>
+<p>where <span class="math inline">\(L\)</span> is the length of the vector and <span class="math inline">\(b\)</span> is the base of the logarithm.<strong>muti</strong> uses base-2 logarithms for calculating the entropies, so <span class="math inline">\(\mathrm{MI}\)</span> is expressed in units of “bits”. In cases where <span class="math inline">\(p(x_i) = 0\)</span>, then <span class="math inline">\(\mathrm{H}(X) = 0\)</span>.</p>
 <p>The joint entropy of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is</p>
 <p><span class="math display">\[
 \mathrm{H}(X,Y) = -\sum_{i=1}^{L} p(x_i,y_i) \log_b p(x_i,y_i).
 \]</span></p>
-<p>where <span class="math inline">\(p(x_i,y_i)\)</span> is the probability that <span class="math inline">\(X = x_i\)</span> and <span class="math inline">\(Y = y_j\)</span>. The mutual information between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is then</p>
+<p>where <span class="math inline">\(p(x_i,y_i)\)</span> is the probability that <span class="math inline">\(X = x_i\)</span> and <span class="math inline">\(Y = y_j\)</span>. The mutual information contained in <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is then</p>
 <p><span class="math display">\[
 \mathrm{MI}(X;Y) = \mathrm{H}(X) + \mathrm{H}(Y) - \mathrm{H}(X,Y).
 \]</span></p>
@@ -119,13 +114,12 @@
 \mathrm{MI}^*(X;Y) = \frac{\mathrm{MI}(X;Y)}{\sqrt{\mathrm{H}(X)\mathrm{H}(Y)}}.
 \]</span></p>
 </div>
-<div id="using-muti" class="section level1">
+<div id="usage" class="section level1">
 <h1 class="hasAnchor">
-<a href="#using-muti" class="anchor"></a>Using <code>muti</code>
-</h1>
-<p><strong>Input</strong>. At a minimum <code>muti</code> requires two vectors of class <code>numeric</code> or <code>integer</code>. See <code><a href="../reference/muti.html">?muti</a></code> for all of the other function arguments.</p>
-<p><strong>Output</strong>. The output of <code>muti</code> is a data frame with the <span class="math inline">\(\mathrm{MI}\)</span> <code>MI_xy</code> and respective significance threshold value <code>MI_tv</code> at different lags. Note that a negative (positive) lag means <em>X</em> leads (trails) <em>Y</em>. For example, if <code>length(x) == length(y) == TT</code>, then the <span class="math inline">\(\mathrm{MI}\)</span> in <code>x</code> and <code>y</code> at a lag of -1 would be based on <code>x[1:(TT-1)]</code> and <code>y[2:TT]</code>.</p>
-<p>Additionally, <code>muti</code> produces a 3-panel plot of</p>
+<a href="#usage" class="anchor"></a>Usage</h1>
+<p><strong>Input</strong>. At a minimum <strong>muti</strong> requires two vectors of class <code>numeric</code> or <code>integer</code>. See <code><a href="../reference/muti.html">?muti</a></code> for all of the other function arguments.</p>
+<p><strong>Output</strong>. The output of <strong>muti</strong> is a data frame with the <span class="math inline">\(\mathrm{MI}\)</span> <code>MI_xy</code> and respective significance threshold value <code>MI_tv</code> at different lags. Note that a negative (positive) lag means <em>X</em> leads (trails) <em>Y</em>. For example, if <code>length(x) == length(y) == TT</code>, then the <span class="math inline">\(\mathrm{MI}\)</span> in <code>x</code> and <code>y</code> at a lag of -1 would be based on <code>x[1:(TT-1)]</code> and <code>y[2:TT]</code>.</p>
+<p>Additionally, <strong>muti</strong> produces a 3-panel plot of</p>
 <ol style="list-style-type: decimal">
 <li>the original data (top);</li>
 <li>their symbolic or discretized form (middle);</li>
@@ -136,15 +130,16 @@
 <div id="data-discretization" class="section level2">
 <h2 class="hasAnchor">
 <a href="#data-discretization" class="anchor"></a>Data discretization</h2>
-<p><code>muti</code> computes <span class="math inline">\(\mathrm{MI}\)</span> based on 1 of 2 possible discretizations of the data in a vector <code>x</code>:</p>
+<p><strong>muti</strong> computes <span class="math inline">\(\mathrm{MI}\)</span> based on 1 of 2 possible discretizations of the data in a vector <code>x</code>:</p>
 <ol style="list-style-type: decimal">
 <li><p><strong>Symbolic</strong>. (Default) For <code>1 &lt; i &lt; length(x)</code>, <code>x[i]</code> is translated into 1 of 5 symbolic representations based on its value relative to <code>x[i-1]</code> and <code>x[i+1]</code>: “peak”, “decreasing”, “same”, “trough”, or “increasing”. For example, the symbolic translation of the vector <code><a href="https://rdrr.io/r/base/c.html">c(1.1,2.1,3.3,1.2,3.1)</a></code> would be <code><a href="https://rdrr.io/r/base/c.html">c("increasing","peak","trough")</a></code>. For additional details, see <a href="https://doi.org/10.1111/j.1461-0248.2004.00629.x">Cazelles (2004)</a>.</p></li>
 <li><p><strong>Binned</strong>. Each datum is placed into 1 of <code>n</code> equally spaced bins as in a histogram. If the number of bins is not specified, then it is calculated according to Rice’s Rule where <code>n = ceiling(2*length(x)^(1/3))</code>.</p></li>
 </ol>
 </div>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+</div>
+<div id="installation" class="section level1">
+<h1 class="hasAnchor">
+<a href="#installation" class="anchor"></a>Installation</h1>
 <p>You can install the development version using <code>devtools</code>.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="cf">if</span>(<span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span>(<span class="st">"devtools"</span>)) {</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2">  <span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>)</a>
@@ -152,9 +147,9 @@
 <a class="sourceLine" id="cb1-4" data-line-number="4">}</a>
 <a class="sourceLine" id="cb1-5" data-line-number="5">devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/install_github.html">install_github</a></span>(<span class="st">"mdscheuerell/muti"</span>)</a></code></pre></div>
 </div>
-<div id="examples" class="section level2">
-<h2 class="hasAnchor">
-<a href="#examples" class="anchor"></a>Examples</h2>
+<div id="examples" class="section level1">
+<h1 class="hasAnchor">
+<a href="#examples" class="anchor"></a>Examples</h1>
 <div id="ex-1-real-values-as-symbolic" class="section level3">
 <h3 class="hasAnchor">
 <a href="#ex-1-real-values-as-symbolic" class="anchor"></a>Ex 1: Real values as symbolic</h3>
@@ -230,11 +225,10 @@
 ## 9   4 0.901 1.150</code></pre>
 </div>
 </div>
-</div>
 <div id="citation" class="section level1">
 <h1 class="hasAnchor">
 <a href="#citation" class="anchor"></a>Citation</h1>
-<p>Please cite the <code>muti</code> package as:</p>
+<p>Please cite the <strong>muti</strong> package as:</p>
 <blockquote>
 <p>Scheuerell, M. D. (2017) muti: An R package for computing mutual information. <a href="https://doi.org/10.5281/zenodo.439391" class="uri">https://doi.org/10.5281/zenodo.439391</a></p>
 </blockquote>
@@ -250,12 +244,12 @@
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#background">Background</a></li>
       <li>
-<a href="#using-muti">Using <code>muti</code></a><ul class="nav nav-pills nav-stacked">
+<a href="#usage">Usage</a><ul class="nav nav-pills nav-stacked">
 <li><a href="#data-discretization">Data discretization</a></li>
-      <li><a href="#installation">Installation</a></li>
-      <li><a href="#examples">Examples</a></li>
       </ul>
 </li>
+      <li><a href="#installation">Installation</a></li>
+      <li><a href="#examples">Examples</a></li>
       <li><a href="#citation">Citation</a></li>
       </ul>
 </div>
@@ -266,7 +260,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Mark Scheuerell.</p>
+  <p>Developed by .</p>
 </div>
 
 <div class="pkgdown">
