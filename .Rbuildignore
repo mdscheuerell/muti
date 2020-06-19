@@ -4,3 +4,5 @@
 ^README_files.*
 ^docs.*
 ^\.travis.yml$
+^_pkgdown\.yml$
+^docs$

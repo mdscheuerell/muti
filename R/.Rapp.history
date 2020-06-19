@@ -1,0 +1,36 @@
+?is/logical
+?ncol
+library(MARSS)
+?MARSS
+mm=c(TRUE, FALSE)
+class(mm)
+mm=c(1L, 2L)
+class(mm)
+mm=c(1, 2)
+class(mm)
+mm=c("1", "2")
+class(mm)
+mm=c("1", 2)
+class(mm)
+mm
+mm=c("1", TRUE)
+class(mm)
+mm=c(1, TRUE)
+class(mm)
+mm=c(1, "TRUE")
+class(mm)
+load("/Users/mark/Dropbox/research/projects/California/kelp community/Validation Sims/linear_chain_staticB_multisite.3.Blow.OElow.Rdata")
+ls()
+names(saved_output[[1]])
+names(saved_output[[1]]$estimate)
+names(saved_output[[1]]$sim_output)
+names(saved_output[[1]]$data)
+length(saved_output[[1]]$data)
+dim(saved_output[[1]]$data)
+dim(saved_output[[2]]$data)
+dim(saved_output[[1]]$data
+saved_output[[1]]$data
+length(saved_output)
+str(saved_output)
+str(saved_output[[1]])
+saved_output[[1]]$estimate$term
